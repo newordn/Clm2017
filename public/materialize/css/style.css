@@ -1,0 +1,74 @@
+/*toolbar*/
+#toolbar
+{
+	text-align: center;
+	background-color:#2196f3  ;
+	margin:0px;
+	color: white;
+	box-shadow: 0px 7px 2px 1px #888888;
+	padding:10px;
+}
+
+/*main*/
+	/*main home*/
+
+.cercle
+{
+	box-shadow: 0px 7px 2px 1px #888888;
+	margin-left:30px;
+	margin-right:30px;
+	margin-bottom: -70px;
+	text-align: center;
+	padding:130px 0px 130px 0px;
+	border-radius: 100%;
+	width:23%;
+	background-color: green;
+	border-color: white;
+	display: inline-block;
+	color:white;
+}
+	/*main inscription*/
+.conteneur
+{
+	margin-top:-20px;
+	height:300px;
+	text-align: center;
+}
+
+.container_color
+{
+	//background:#dcedc8;
+
+	border-radius: 10px;
+}
+
+.class
+{
+	display:block;
+	margin:auto;
+	color:black;
+}
+.padding
+{
+	margin:5px;
+	padding: 20px;
+}
+
+	/*footer*/
+.footer_home
+{
+	position:absolute;
+	bottom:0px;
+	width:100%;
+	background-color: #888888;
+	text-align: center;
+}
+select
+{
+	display:block;
+}
+label
+{
+	font-size:15px;
+	color:rgb(50,50,50);
+}
