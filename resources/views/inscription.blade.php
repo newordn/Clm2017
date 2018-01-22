@@ -5,6 +5,8 @@ INSCRIPTION
 @section('body')
   
   <div class="container container_color container_margin ">
+    <!-- si il ya une erreur on la notifie ici en haut -->
+    <h3 style="color:red" class="center-align">{{$error}}</h3>
     <!-- formulaire d'inscription -->
       <form action="{{route('inscriptionPost')}}" method="POST">
       <!-- nom -->
