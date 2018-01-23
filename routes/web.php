@@ -19,6 +19,8 @@ Route::get('/', function () {
 // inscription routes
 Route::get('inscription', ['uses'=> 'InscriptionController@getForm', 'as' => 'inscription']);
 Route::post('inscription', ['uses'=> 'InscriptionController@postForm', 'as' => 'inscriptionPost']);
+Route::get('inscription/modify/{id}',['uses'=>'InscriptionController@modifyForm','as'=>'inscriptionModifyGet']);
+Route::post('inscription/modify',['uses'=>'InscriptionController@modifyPost','as'=>'inscriptionModifyPost']);
 
 // users app routes
 Route::post('login',['uses'=>'UserController@login','as'=>'login']);

@@ -111,4 +111,29 @@ class InscriptionRepository implements InscriptionRepositoryInterface
 		return Account::find($id);		
 	}
 
+	// to make modification to a student
+	public function modify($account)
+	{	
+		// we make all the updates
+		$eleve = Eleve::find($account->input('id'));
+		$eleve->last_name = $account->input('last_name');
+		$eleve->first_name = $account->input('first_name'); 
+        $accountUpdated = $eleve->account;
+        $accountUpdated->payment = $account->input('payment');
+        $accountUpdated->amount_paid = $account->input('amount_paid');
+        $accountUpdated->fees = $account->input('fees');
+        $accountUpdated->trimestre = $account->input('trimestre');
+        $classe = $eleve->classe;
+        $classe->category = $account->input('category');
+        $classe->level = $account->input('level');
+        $classe->module = $account->input('module');
+        // perfoming
+        $eleve->save();
+        $classe->save();
+        $accountUpdated->save();
+        return $eleve->id;
+
+
+	}	
+
 }
