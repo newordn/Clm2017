@@ -63,7 +63,7 @@ class PdfController extends Controller
         $pdf->Cell(0,5,$eleve->last_name.' '.$eleve->first_name,'0','','C');
         $pdf->Ln(10);
         $pdf->SetFont('Times','B',12);
-        $pdf->Cell(0,5,'CATEGORIE / CATEGORY : '.str_replace("-","/",$classe->category),'0','','C');
+        $pdf->Cell(0,5,'CAT'.utf8_decode("É").'GORIE / CATEGORY : '.str_replace("-","/",$classe->category),'0','','C');
         $pdf->SetFont('Times','',14);
         //$pdf->Cell(30,5,str_replace("-","/",$classe->category),'0','','L');
         $pdf->Ln();
