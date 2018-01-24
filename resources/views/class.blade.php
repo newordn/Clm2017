@@ -131,9 +131,9 @@ CLASS/CLASSES
 					<div class="card col s4 orange">	
 						<div class="card-content">
 							<div class="card-title">
-								<h5>Supérieur<a href="file:///home/neword/Desktop/cours"><i class="fa fa-book"></i></a></h5>
+								<h5>Perfectionnement<a href="file:///home/neword/Desktop/cours"><i class="fa fa-book"></i></a></h5>
 							</div>
-							<p><a class="btn waves-effect waves-light modal-trigger" href="/class/Juniors-Juniors/Supérieur1/A">A</a><a class="btn waves-effect waves-light modal-trigger" href="/class/Juniors-Juniors/Supérieur1/B">B</a></p>
+							<p><a class="btn waves-effect waves-light modal-trigger" href="/class/Juniors-Juniors/perfectionnement/A">A</a><a class="btn waves-effect waves-light modal-trigger" href="/class/Juniors-Juniors/perfectionnement/B">B</a></p>
 						</div>
 					</div>
 				<!--superieure 1--> 
@@ -275,16 +275,16 @@ CLASS/CLASSES
 				<!--Upper-->
 
 
-				<!--  superieure 1-->
+				<!--  Perfectionnement 1-->
 					<div class="card col s4 orange">	
 						<div class="card-content">
 							<div class="card-title">
-								<h5>Supérieur<a href="file:///home/neword/Desktop/cours"><i class="fa fa-book"></i></a></h5>
+								<h5>Perfectionnement<a href="file:///home/neword/Desktop/cours"><i class="fa fa-book"></i></a></h5>
 							</div>
-							<p><a class="btn waves-effect waves-light modal-trigger" href="/class/Adultes-Adults/Supérieur1/A">A</a><a class="btn waves-effect waves-light modal-trigger" href="/class/Adultes-Adults/Supérieur1/B">B</a></p>
+							<p><a class="btn waves-effect waves-light modal-trigger" href="/class/Adultes-Adults/Perfectionnement/A">A</a><a class="btn waves-effect waves-light modal-trigger" href="/class/Adultes-Adults/Perfectionnement/B">B</a></p>
 						</div>
 					</div>
-				<!--superieure 1--> 
+				<!--Perfectionnement 1--> 
 
 				<!--  Advanced 1-->
 					<div class="card col s4 orange">	

@@ -22,4 +22,4 @@
 @endsection
 @section('footer')
 footer_home
-@endsection
+@stop
