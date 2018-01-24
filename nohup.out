@@ -1762,3 +1762,46 @@ Stack trace:
 #5 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(965): app('Illuminate\\Cont...')
 #6 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Excepti in /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
 [Wed Jan 24 12:58:31 2018] 192.168.1.2:60264 Invalid request (Unexpected EOF)
+
+                                                           
+  [Symfony\Component\Debug\Exception\FatalThrowableError]  
+  Class 'Barryvdh\Debugbar\ServiceProvider' not found      
+                                                           
+
+[Wed Jan 24 13:44:38 2018] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php:752
+Stack trace:
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(752): ReflectionClass->__construct('view')
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build('view')
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('view', Array)
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(721): Illuminate\Container\Container->make('view', Array)
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(110): Illuminate\Foundation\Application->make('view', Array)
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(965): app('Illuminate\\Cont...')
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Excepti in /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
+[Wed Jan 24 13:44:38 2018] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php:752
+Stack trace:
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(752): ReflectionClass->__construct('view')
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build('view')
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('view', Array)
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(721): Illuminate\Container\Container->make('view', Array)
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(110): Illuminate\Foundation\Application->make('view', Array)
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(965): app('Illuminate\\Cont...')
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Excepti in /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
+[Wed Jan 24 13:44:42 2018] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php:752
+Stack trace:
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(752): ReflectionClass->__construct('view')
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build('view')
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('view', Array)
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(721): Illuminate\Container\Container->make('view', Array)
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(110): Illuminate\Foundation\Application->make('view', Array)
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(965): app('Illuminate\\Cont...')
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Excepti in /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
+[Wed Jan 24 13:44:42 2018] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php:752
+Stack trace:
+#0 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(752): ReflectionClass->__construct('view')
+#1 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build('view')
+#2 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('view', Array)
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(721): Illuminate\Container\Container->make('view', Array)
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(110): Illuminate\Foundation\Application->make('view', Array)
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(965): app('Illuminate\\Cont...')
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Excepti in /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
+[Wed Jan 24 13:49:15 2018] 192.168.1.2:60490 Invalid request (Unexpected EOF)
