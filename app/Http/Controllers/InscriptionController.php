@@ -43,7 +43,6 @@ class InscriptionController extends Controller
         $classe = $eleve->classe;
        if(session('authentificated')=="yes")
         {
-        
             return view('inscriptionModify')->witheleve($eleve)->withaccount($account)->withclasse($classe);
         } 
         else

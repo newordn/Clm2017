@@ -124,7 +124,7 @@ class InscriptionRepository implements InscriptionRepositoryInterface
         $accountUpdated->fees = $account->input('fees');
         $accountUpdated->trimestre = $account->input('trimestre');
         $classe = $eleve->classe;
-        $classe->category = $account->input('category');
+        $classe->category = str_replace("/","-",$account->input('category'));
         $classe->level = $account->input('level');
         $classe->module = $account->input('module');
         // perfoming
