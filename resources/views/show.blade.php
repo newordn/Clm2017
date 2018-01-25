@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('body')
+<div class="rown center-align"><h4>{{$nbStudents}} APPRENANT(E)S</h4></div>
 <div class=" row center-align" style="margin-top:20px;margin-left::;0px;">
 @php($i=0)
 @foreach($students as $student)

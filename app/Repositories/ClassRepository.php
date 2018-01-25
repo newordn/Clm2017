@@ -22,13 +22,14 @@ Class ClassRepository implements ClassRepositoryInterface
         $absences = array();
         $absences2 = array();
         $sum=0;
+        $nbStudents=0; 
         foreach ($classes as $classe) {
 
             array_push($students, $classe->eleves()->get());
         }
         
         foreach ($students[0] as $student) {
-
+            $nbStudents++;
             array_push($absences, $student->absences);
         }
         foreach ($absences as $absence) {
@@ -38,8 +39,9 @@ Class ClassRepository implements ClassRepositoryInterface
             }
             array_push($absences2,$sum);
         }
+        
 
-    	return view('show')->withstudents($students[0])->withabsences($absences2);
+    	return view('show')->withstudents($students[0])->withabsences($absences2)->withnbStudents($nbStudents);
     }
 
 
