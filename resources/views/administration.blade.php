@@ -2,7 +2,7 @@
 @section('body')
 
 <div class="center-align" style="margin-top:15px">
-	<a class="waves-effect waves-light btn  left-align" href="{{route('tresorerie')}}">TRESORERIE</a>
+	<a class="waves-effect waves-light btn  left-align" href="{{route('tresorerie')}}">TRÉSORERIE</a>
 	<a class="waves-effect waves-light btn blue modal-trigger" href="#loginModal"><i class="fa fa-plus"></i></a>
 </div>
 @php($loginOrSign="/signIn")

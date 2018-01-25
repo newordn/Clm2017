@@ -20,28 +20,16 @@ Class ClassRepository implements ClassRepositoryInterface
         $classes = Classe::where([['category',$category],['level',$level],['module',$module]])->get();
         $students = array();
         $absences = array();
-        $absences2 = array();
-        $sum=0;
-        $nbStudents=0; 
+       
         foreach ($classes as $classe) {
 
             array_push($students, $classe->eleves()->get());
         }
         
-        foreach ($students[0] as $student) {
-            $nbStudents++;
-            array_push($absences, $student->absences);
-        }
-        foreach ($absences as $absence) {
-            $sum=0;
-            foreach ($absence as $a) {
-                $sum +=$a->absence;
-            }
-            array_push($absences2,$sum);
-        }
+       
         
 
-    	return view('show')->withstudents($students[0])->withabsences($absences2)->withnbStudents($nbStudents);
+    	return view('show')->withstudents($students[0]);
     }
 
 
