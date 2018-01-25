@@ -3,11 +3,14 @@
 /public/storage
 /storage/*.key
 /vendor
+/bootstrap
+/database
 /.idea
 /.vagrant
+.env
+nohup.out
+*.sqlite
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-/.env
-/nohup.out
