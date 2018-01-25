@@ -31,8 +31,4 @@
 
 @section('footer')
 footer_home
-<<<<<<< HEAD
 @stop
-=======
-@stop
->>>>>>> 110bbdc8329204ee871dd749b23dcc0bed833ce9
