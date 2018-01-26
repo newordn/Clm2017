@@ -10,7 +10,7 @@ class InscriptionController extends Controller
 {
     public function getForm()
     {
-        if(session('authentificated')=="yes")
+        if(session('authentificated')=="yes" && session('register')=="yes")
         {
     	return view('inscription')->witherror("");
         }
@@ -21,7 +21,7 @@ class InscriptionController extends Controller
 
     public function postForm(InscriptionRequest $inscriptionRequest, InscriptionRepository $inscriptionRepository)
     {
-        if(session('authentificated')=="yes")
+        if(session('authentificated')=="yes" && session('register')=="yes")
         {
             $id = $inscriptionRepository->save($inscriptionRequest);
     	if($id!=-1 && $id!=0) // si l'eleve a ete inscrit
