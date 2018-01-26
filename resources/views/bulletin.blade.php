@@ -130,7 +130,7 @@ BULLETIN
             <select name="decision" id="decision">
               <option selected>PROMU-PROMOTED</option>
               <option>PROMU EXCEPTIONNELLEMENT-PROMOTED EXCEPTIONALLY</option>
-              <option>REFUSE-FAILED</option>
+              <option>REPRENDRE-REPEAT</option>
             </select>
           </div>
         <!-- Decision -->

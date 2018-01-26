@@ -164,7 +164,7 @@ class PdfController extends Controller
 
         $pdf->Ln(10);
         $pdf->SetFont('Times','B',14);
-        $pdf->Cell(0,5,'Classe / Class : '.utf8_decode(str_replace("-","/",$classe->level)),'0','','C');
+        $pdf->Cell(0,5,'Classe / Class : '.utf8_decode(str_replace("-","/",$classe->level.' '.$classe->module)),'0','','C');
 
         $pdf->Ln(3);
         // premiere ligne evaluation et les matieres
@@ -232,7 +232,7 @@ class PdfController extends Controller
         $pdf->Cell(23,11,$matieres[2]->note,'1','','C');
         $pdf->Cell(30,11,$matieres[3]->note,'1','','C');
         $pdf->Cell(23,11,$matieres[4]->note,'1','','C');
-        $total = $matieres[1]->note + $matieres[1]->note + $matieres[2]->note+ $matieres[3]->note + $matieres[4]->note;
+        $total = $matieres[0]->note + $matieres[1]->note + $matieres[2]->note+ $matieres[3]->note + $matieres[4]->note;
         $pdf->Cell(13,11,$total,'1','','C');
 
         $total1 =0;
@@ -252,7 +252,7 @@ class PdfController extends Controller
             $pdf->Cell(23,11,$matieres[2]->note1,'1','','C');
             $pdf->Cell(30,11,$matieres[3]->note1,'1','','C');
             $pdf->Cell(23,11,$matieres[4]->note1,'1','','C');
-            $total1 = $matieres[1]->note1 + $matieres[1]->note1 + $matieres[2]->note1+ $matieres[3]->note1 + $matieres[4]->note1;
+            $total1 = $matieres[0]->note1 + $matieres[1]->note1 + $matieres[2]->note1+ $matieres[3]->note1 + $matieres[4]->note1;
             $pdf->Cell(13,11,$total1,'1','','C');
 
 
@@ -269,7 +269,7 @@ class PdfController extends Controller
         $Moyenne = ($total1+$total)/2;
         if($matieres[1]->note1==-1)
         {  
-            $Moyenne = $total/5;
+            $Moyenne = $total;
         }
          $pdf->Cell(30,11,$matieres[0]->note,'1','','C');
             $pdf->Cell(23,11,$matieres[1]->note,'1','','C');
@@ -369,7 +369,7 @@ class PdfController extends Controller
 
         $pdf->Cell(0,5,'Le Directeur/The Director    :                ','0','','R');
 
-        $pdf->output('D','BULLETIN'.$eleve->last_name.'_'.$eleve->first_name.'.pdf',1);
+        $pdf->output('D','BULLETIN_'.$eleve->last_name.'_'.$eleve->first_name.'.pdf',1);
     }
 }
 
