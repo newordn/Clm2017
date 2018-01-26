@@ -29,7 +29,7 @@ class PdfController extends Controller
         $pdf->Cell(0,6,'PROGRAMME DE FORMATION LINGUISTIQUE BILINGUE','0','','C');
         $pdf->Ln();
         $pdf->SetFont('Times','I',16);
-        $pdf->Cell(0,6,'BILINGUAL TRAINING PROGRAMMME','0','','C'); 
+        $pdf->Cell(0,6,'BILINGUAL TRAINING PROGRAMME','0','','C'); 
         $pdf->Ln(9);
         
         $pdf->SetFont('Times','',16);
@@ -123,7 +123,7 @@ class PdfController extends Controller
         $pdf->Cell(0,6,'PROGRAMME DE FORMATION LINGUISTIQUE BILINGUE','0','','C');
         $pdf->Ln();
         $pdf->SetFont('Times','I',16);
-        $pdf->Cell(0,6,'BILINGUAL TRAINING PROGRAMMME','0','','C'); 
+        $pdf->Cell(0,6,'BILINGUAL TRAINING PROGRAMME','0','','C'); 
 
         $pdf->Ln(7);
 
@@ -137,7 +137,7 @@ class PdfController extends Controller
         $pdf->Ln(7);
 
         $pdf->SetFont('Times','',13);
-        $pdf->Cell(0,5,"COUR D'ANGLAIS/FRANCAIS POUR ".strtoupper(explode("-",$classe->category)[0]),'0','','C');
+        $pdf->Cell(0,5,"COURS D'ANGLAIS/FRANCAIS POUR ".strtoupper(explode("-",$classe->category)[0]),'0','','C');
         $pdf->Ln();
         $pdf->cell(55);
         $pdf->SetFont('Times','I',13);
