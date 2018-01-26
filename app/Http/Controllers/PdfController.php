@@ -266,7 +266,7 @@ class PdfController extends Controller
         $pdf->Cell(10);
         $pdf->SetFont('Times','I',9);
         $pdf->Cell(23,11,'Total','1','','C');
-        $Moyenne = ($total1+$total)/2;
+        $Moyenne = $total1+$total;
         if($matieres[1]->note1==-1)
         {  
             $Moyenne = $total;
