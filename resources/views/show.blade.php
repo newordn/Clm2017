@@ -1,7 +1,10 @@
 @extends('layout')
 
 @section('body')
-<div class="rown center-align"><h4>{{count($students)}} APPRENANT(E)S</h4></div>
+<div class="row center-align">
+	<div class="col s10 "><h4>{{count($students)}} APPRENANT(E)S.</h4></div>
+	<div class="col s2"><button class="btn blue">Imprimer</button></div>
+</div>
 <div class=" row center-align" style="margin-top:20px;margin-left::;0px;">
 @foreach($students as $student)
 <div class="card col s2" style="margin-right: 10px;height: 300px;"><strong class="btn">NOM/SURNAME</strong> {{$student->last_name}}<br/><strong class="btn">PRÉNOM/FIRST NAME</strong>
