@@ -65,10 +65,13 @@ INSCRIPTION
             <option>Lower Intermediate</option>
             <option>Intermédiaire</option>
             <option>Intermediate</option>
+            <option>Avancé</option>
+            <option>Uper Intermediate</option>
             <option>Supérieur</option>
-            <option>Upper</option>
-            <option>Perfectionnement</option>
             <option>Advanced</option>
+            <option>Perfectionnement</option>
+            <option>Advanced Continuation</option>
+            
           </select>
         </div>
       <!--niveau-->

@@ -48,14 +48,18 @@ class InscriptionRepository implements InscriptionRepositoryInterface
 				$level_integer=4;
 			if($level=="Intermediate")
 				$level_integer=4;
+			if($level=="Avancé")
+				$level_integer=5;
+			if($level=="Uper Intermediate")
+				$level_integer=5;
 			if($level=="Supérieur")
-				$level_integer=5;
-			if($level=="Upper")
-				$level_integer=5;
-			if($level=="Perfectionnement")
 				$level_integer=6;
 			if($level=="Advanced")
 				$level_integer=6;
+			if($level=="Perfectionnement")
+				$level_integer=7;
+			if($level=="Advanced Continuation")
+				$level_integer=7;
 			$last_student = Eleve::all()->last(); 
 			if($last_student!=null)
 			{
