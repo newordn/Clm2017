@@ -17,8 +17,8 @@ class Account extends Migration
          Schema::create('account', function (Blueprint $table) {
             $table->increments('id');
             $table->string('payment');
-            $table->integer('amount_paid');
-            $table->integer('fees'); // the tuitions fees of the student
+            $table->string('amount_paid');
+            $table->string('fees'); // the tuitions fees of the student
             $table->integer('trimestre');
             $table->date('year');
             $table->integer('eleve_id')->unsigned();

@@ -23,7 +23,8 @@ class PdfController extends Controller
         $eleve = $inscriptionRepository->getStudent($id);
         $account = $eleve->account;
         $classe = $eleve->classe;
-
+        $mAmount = (int) $account->amount_paid;
+        $mFees = (int) $account->fees;
 
         // we write properly
         $pdf->Cell(0,6,'PROGRAMME DE FORMATION LINGUISTIQUE BILINGUE','0','','C');
@@ -74,11 +75,17 @@ class PdfController extends Controller
         $pdf->cell(10);
         $pdf->SetFont('Times','',11);
         $pdf->Cell(105,5,'Mode de paiement/Mode of payment : '.$account->payment,'0','','L');
+        if($mAmount)
         $pdf->Cell(80,5,'---> Somme vers'.utf8_decode("é").'e/Amount paid : '.$account->amount_paid. " Francs",'0','','L');
+        else
+        $pdf->Cell(80,5,'---> Somme vers'.utf8_decode("é").'e/Amount paid : '.$account->amount_paid,'0','','L');
         $pdf->Ln(6);
         $pdf->cell(10);
-        $reste = $account->fees - $account->amount_paid;
-        $pdf->Cell(90,5,'---> Arri'.utf8_decode("é").'r'.utf8_decode("é").'s d'.utf8_decode("û").'s / Fees Owed :  '.$reste.' Francs','0','','L');//.......
+        $reste =0;
+        if($mAmount && $mFees)
+        $reste = $mFees - $mAmount;
+        $pdf->Cell(90,5,'---> Arri'.utf8_decode("é").'r'.utf8_decode("é").'s d'.utf8_decode("û").'s / Fees Owed :  '.$reste.' Francs','0','','L');
+
         $pdf->Ln(8);
         $pdf->Cell(10);
         $pdf->SetFont('Times','',11);
@@ -86,7 +93,11 @@ class PdfController extends Controller
         // $pdf->Cell(35,5,$classe->start_of_module,'0','','C');
         $pdf->Ln(6);
         $pdf->Cell(10);
+        if($mFees)
+        $pdf->Cell(60,5,'Frais des cours / Tuition fees : ' .$account->fees." Francs",'0','','L');
+        else
         $pdf->Cell(60,5,'Frais des cours / Tuition fees : ' .$account->fees,'0','','L');
+        
         $pdf->Ln(10);
         $pdf->Cell(10);
         $pdf->Cell(55,5,'Imprim'.utf8_decode("é").' le : ' .date("Y-m-d h-m-s"),'0','','L');
@@ -117,6 +128,8 @@ class PdfController extends Controller
         $account = $eleve->account;
         $classe = $eleve->classe;
         $absences = $eleve->absences;
+        $mAmount = (int)$account->amount_paid;
+        $mFees = (int)$account->fees;
 
 
         $pdf->SetFont('Times','',16);
@@ -329,6 +342,8 @@ class PdfController extends Controller
         $pdf->Ln(5);
 
         $pdf->Cell(10);
+         $reste =0;
+        if($mAmount && $mFees)
          $reste = $account->fees - $account->amount_paid;
         $pdf->Cell(70,5,'Arri'.utf8_decode("é").'r'.utf8_decode("é").'s d'.utf8_decode("û").'s / Fees Owed : '.$reste,'0','','L');
 
@@ -348,8 +363,10 @@ class PdfController extends Controller
         $pdf->Ln(8);
 
         $pdf->Cell(10);
-        $pdf->Cell(0,5,'Frais des cours / Tuition fees : '.$account->fees,'0','','L');
-        
+        if($mFees)
+        $pdf->Cell(0,5,'Frais des cours / Tuition fees : '.$account->fees. ' Francs','0','','L');
+        else 
+        $pdf->Cell(0,5,'Frais des cours / Tuition fees : '.$account->fees,'0','','L');    
         $pdf->Ln(6);
 
         $pdf->Cell(10);
