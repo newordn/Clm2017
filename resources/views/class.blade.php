@@ -94,7 +94,7 @@ CLASS/CLASSES
 				</div>
 			<!-- francais -->
 			<!-- english -->
-				<div class="row center-align"><div class="col s12"><h4><button class="btn btn-large orange">ENGLISH</button></h4></div></div>
+				<div class="row center-align"><div class="col s12"><h4><button class="btn btn-large green">ENGLISH</button></h4></div></div>
 
 				<div class="row center-align ">
 					
@@ -271,7 +271,7 @@ CLASS/CLASSES
 				</div>
 			<!-- francais -->
 			<!-- english -->
-				<div class="row center-align"><div class="col s12"><h4><button class="btn btn-large orange">ENGLISH</button></h4></div></div>
+				<div class="row center-align"><div class="col s12"><h4><button class="btn btn-large green">ENGLISH</button></h4></div></div>
 				<div class="row center-align">
 
 					<!-- Foundation -->
