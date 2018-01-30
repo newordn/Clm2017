@@ -14,6 +14,3 @@
 @endforeach
 </div>
 @stop
-@section('footer')
-footer_home
-@stop
