@@ -127,13 +127,10 @@ class InscriptionRepository implements InscriptionRepositoryInterface
         $accountUpdated->amount_paid = $account->input('amount_paid');
         $accountUpdated->fees = $account->input('fees');
         $accountUpdated->trimestre = $account->input('trimestre');
-        $classe = $eleve->classe;
-        $classe->category = str_replace("/","-",$account->input('category'));
-        $classe->level = $account->input('level');
-        $classe->module = $account->input('module');
+		$classe=Classe::where([['category',$account->input('category')], ['level',$account->input('level')],['module',$account->input('module')]])->get()->last()
+        $eleve->classe_id = $classe->id;
         // perfoming
         $eleve->save();
-        $classe->save();
         $accountUpdated->save();
         return $eleve->id;
 
