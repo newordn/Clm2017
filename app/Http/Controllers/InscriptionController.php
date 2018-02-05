@@ -29,7 +29,7 @@ class InscriptionController extends Controller
         else if($id==-1) // si l'eleve est deja inscript
             return view ('inscription')->witherror("L' APPRENANT(E) EST DÉJA INSCRIT(E).");
         else // si il y'a erreur lors de l'inscription
-            return view('inscription')->witherror("ENTREZ CORRECTEMENT LA VALEUR DE CHAQUE CHAMP.");
+            return view('inscription')->witherror("VEUILLEZ OUVRIR LA CLASSE AU PRÉALABLE.");
         }
         else
             return redirect('/');

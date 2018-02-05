@@ -11,8 +11,7 @@
 <div class="row padding" >
 	@foreach($users as $user)
 		<div class="card col s4 center-align">
-		<i><strong>Login: </strong></i>	<button class="btn">{{$user->login}}</button		<i><strong>Password:</strong></i>	<button class="btn">{{$user->password}}</button>
-	
+		<i><strong>Login: </strong></i>	<button class="btn">{{$user->login}}</button		
 	<a href="{{url('/delete/')}}/{{$user->id}}"><i class="fa fa-times" style="color:red"></i></a>
 
 			</div>

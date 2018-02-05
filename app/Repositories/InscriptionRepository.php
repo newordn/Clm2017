@@ -28,6 +28,7 @@ class InscriptionRepository implements InscriptionRepositoryInterface
 			$eleve = new Eleve;
 
 			$level = $account->input('level');
+			$trimestre = $account->input('trimestre');
 			
 
 			$eleve->last_name = $account->input('last_name');
@@ -64,11 +65,16 @@ class InscriptionRepository implements InscriptionRepositoryInterface
 			if($last_student!=null)
 			{
 				$id_eleve = $last_student->id +1 ;
-			$eleve->matricule = substr(date('yy'),0,2).$level_integer.$id_eleve.'CLM';
+				if($id<=9)
+			$eleve->matricule = substr(date('yy'),0,2).$level_integer.$trimestre."00".$id_eleve.'CLM';
+				else if($id<=99)
+			$eleve->matricule = substr(date('yy'),0,2).$level_integer.$trimestre."0".$id_eleve.'CLM';
+				else 
+			$eleve->matricule = substr(date('yy'),0,2).$level_integer.$trimestre."00".$id_eleve.'CLM';
 				
 			}
 			else
-				$eleve->matricule = substr(date('yy'),0,2).$level_integer.'1CLM';
+				$eleve->matricule = substr(date('yy'),0,2).$level_integer.$trimestre.'001CLM';
 				
 			$eleve->img  = "k";
 			
