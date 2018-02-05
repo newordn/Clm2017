@@ -65,9 +65,9 @@ class InscriptionRepository implements InscriptionRepositoryInterface
 			if($last_student!=null)
 			{
 				$id_eleve = $last_student->id +1 ;
-				if($id<=9)
+				if($id_eleve<=9)
 			$eleve->matricule = substr(date('yy'),0,2).$level_integer.$trimestre."00".$id_eleve.'CLM';
-				else if($id<=99)
+				else if($id_eleve<=99)
 			$eleve->matricule = substr(date('yy'),0,2).$level_integer.$trimestre."0".$id_eleve.'CLM';
 				else 
 			$eleve->matricule = substr(date('yy'),0,2).$level_integer.$trimestre."00".$id_eleve.'CLM';
@@ -134,6 +134,7 @@ class InscriptionRepository implements InscriptionRepositoryInterface
         $accountUpdated->fees = $account->input('fees');
         $accountUpdated->trimestre = $account->input('trimestre');
 		$classe=Classe::where([['category',$account->input('category')], ['level',$account->input('level')],['module',$account->input('module')]])->get()->last();
+		if($classe!=null)
         $eleve->classe_id = $classe->id;
         // perfoming
         $eleve->save();
