@@ -27,9 +27,11 @@ Class ClassRepository implements ClassRepositoryInterface
         }
         
        
-        
-
+        if($students[0]!=null)
     	return view('show')->withstudents($students[0]);
+        else
+        return view('show')->withstudents([]);
+            
     }
 
 

@@ -51,7 +51,7 @@ class InscriptionRepository implements InscriptionRepositoryInterface
 				$level_integer=4;
 			if($level=="Avancé")
 				$level_integer=5;
-			if($level=="Uper Intermediate")
+			if($level=="Upper Intermediate")
 				$level_integer=5;
 			if($level=="Supérieur")
 				$level_integer=6;

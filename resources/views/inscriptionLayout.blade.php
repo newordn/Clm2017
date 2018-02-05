@@ -66,7 +66,7 @@ INSCRIPTION
             <option>Intermédiaire</option>
             <option>Intermediate</option>
             <option>Avancé</option>
-            <option>Uper Intermediate</option>
+            <option>Upper Intermediate</option>
             <option>Supérieur</option>
             <option>Advanced</option>
             <option>Perfectionnement</option>

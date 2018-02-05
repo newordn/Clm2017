@@ -150,7 +150,7 @@ CLASS/CLASSES
 						<div class="card col s4 green">	
 							<div class="card-content">
 								<div class="card-title">
-									<h5>UPER INTERMEDIATE<a href="file:///home/neword/Desktop/cours"><i class="fa fa-book"></i></a></h5>
+									<h5>UPPER INTERMEDIATE<a href="file:///home/neword/Desktop/cours"><i class="fa fa-book"></i></a></h5>
 								</div>
 								<p><a class="btn waves-effect waves-light modal-trigger" href="/class/Juniors-Juniors/Upper/A">A</a><a class="btn waves-effect waves-light modal-trigger" href="/class/Juniors-Juniors/Upper/B">B</a></p>
 							</div>
@@ -320,7 +320,7 @@ CLASS/CLASSES
 						<div class="card col s4 green">	
 							<div class="card-content">
 								<div class="card-title">
-									<h5>UPER INTERMEDIATE<a href="file:///home/neword/Desktop/cours"><i class="fa fa-book"></i></a></h5>
+									<h5>UPPER INTERMEDIATE<a href="file:///home/neword/Desktop/cours"><i class="fa fa-book"></i></a></h5>
 								</div>
 								<p><a class="btn waves-effect waves-light modal-trigger" href="/class/Adultes-Adults/Upper/A">A</a><a class="btn waves-effect waves-light modal-trigger" href="/class/Adultes-Adults/Upper/B">B</a></p>
 							</div>
