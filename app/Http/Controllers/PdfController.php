@@ -404,33 +404,37 @@ class PdfController extends Controller
         $header = array('ID', 'NOMS ET PR'.utf8_decode("É").'NOMS', 'ARRI'.utf8_decode("É").'R'.utf8_decode("É").'S D'.utf8_decode("Û").'S','ABSENCES');
         // affichage de l'entete
         $pdf->Ln(15);
-            $pdf->Cell(200,7,"LISTE DE ".strtoupper($classe->category.' '.utf8_decode($classe->level).' '.$classe->module).' DU '.date("y-m-d h:m:s"),0,0,"C");
+            $pdf->Cell(300,7,"LISTE DE ".strtoupper($classe->category.' '.utf8_decode($classe->level).' '.$classe->module).' DU '.date("y-m-d h:m"),0,0,"L");
                 $pdf->Ln(15);
-            $pdf->Cell(10,7,$header[0],1,0,"C");
-            $pdf->Cell(100,7,$header[1],1,0,"C");
-            $pdf->Cell(50,7,$header[2],1,0,"C");
-            $pdf->Cell(35,7,$header[3],1,0,"C");
+            $pdf->Cell(8,7,$header[0],1,0,"C");
+            $pdf->Cell(110,7,$header[1],1,0,"C");
+            $pdf->Cell(47,7,$header[2],1,0,"C");
+            $pdf->Cell(30,7,$header[3],1,0,"C");
 
          $pdf->Ln();
-         $j=0;
-        foreach ($classe->eleves as $eleve) {
-            $pdf->Cell(10,7,$j,1,0,"C");
+         $j=0;;
+        foreach ($classe->eleves->sortBy('last_name') as $eleve) {
+            $pdf->Cell(8,7,$j,1,0,"C");
             $j++;
-            $pdf->Cell(100,7,$eleve->last_name.' '.$eleve->first_name,1,0,"L");           
+            if($eleve->first_name!="//")
+            $pdf->Cell(110,7,utf8_decode($eleve->last_name).' '.utf8_decode($eleve->first_name),1,0,"L"); 
+            else 
+            $pdf->Cell(110,7,$eleve->last_name,1,0,"L"); 
+                      
         $mAmount = (int) $eleve->account->amount_paid;
         $mFees = (int) $eleve->account->fees;
             $reste =0;
         if($mAmount && $mFees)
         $reste = $mFees - $mAmount;
         // arrieres dus
-        $pdf->Cell(50,7,$reste,1,0,"C");
+        $pdf->Cell(47,7,$reste,1,0,"C");
         // absences
         $absences = $eleve->absences;
         $ab =0;
         foreach ($absences as $absence) {
             $ab += $absence->absence;
         }
-        $pdf->Cell(35,7,$ab,1,0,"C");
+        $pdf->Cell(30,7,$ab,1,0,"C");
         $pdf->Ln(7);
         }
 
