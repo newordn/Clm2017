@@ -55,6 +55,9 @@ Route::get('class',['uses'=>'ClassController@getClass','as'=>'class']);
 Route::get('pdf_inscription/{id}','PdfController@getPdfInscription');
 Route::get('pdf_bulletin/{id}/{decision}/{book}','PdfController@getPdfBulletin');
 
+Route::get('pdf_liste_students/{id}','PdfController@getPdfListeStudents');
+
+
 // bulletin routes
 
 Route::get('bulletin/{eleve_id}','BulletinController@getBulletin');

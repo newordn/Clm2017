@@ -3,7 +3,7 @@
 @section('body')
 <div class="row center-align">
 	<div class="col s10 "><h4>{{count($students)}} APPRENANT(E)S.</h4></div>
-	<div class="col s2"><button class="btn blue">Imprimer</button></div>
+	<div class="col s2"><a href="/pdf_liste_students/{{$students[0]->id}}" class="btn blue">Imprimer</a></div>
 </div>
 <div class=" row center-align" style="margin-top:20px;margin-left::;0px;">
 @foreach($students as $student)

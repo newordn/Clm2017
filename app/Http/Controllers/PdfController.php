@@ -388,5 +388,51 @@ class PdfController extends Controller
 
         $pdf->output('D','BULLETIN_'.$eleve->last_name.'_'.$eleve->first_name.'.pdf',1);
     }
+
+    public function getPdfListeStudents($id, InscriptionRepository$inscriptionRepository)
+    { 
+        $pdf  = new RecuPdf();
+
+        $pdf->SetFont('Times','',16);
+        $pdf->AddPage();
+        // recuperation des donnees
+
+        $eleve = $inscriptionRepository->getStudent($id);
+        $classe = $eleve->classe;
+
+        // definition de l'entete
+        $header = array('ID', 'NOMS ET PR'.utf8_decode("É").'NOMS', 'ARRI'.utf8_decode("É").'R'.utf8_decode("É").'S D'.utf8_decode("Û").'S','ABSENCES');
+        // affichage de l'entete
+        $pdf->Ln(15);
+            $pdf->Cell(200,7,"LISTE DE ".strtoupper($classe->category.' '.utf8_decode($classe->level).' '.$classe->module).' DU '.date("y-m-d h:m:s"),0,0,"C");
+                $pdf->Ln(15);
+            $pdf->Cell(10,7,$header[0],1,0,"C");
+            $pdf->Cell(100,7,$header[1],1,0,"C");
+            $pdf->Cell(50,7,$header[2],1,0,"C");
+            $pdf->Cell(35,7,$header[3],1,0,"C");
+
+         $pdf->Ln();
+        foreach ($classe->eleves as $eleve) {
+            $pdf->Cell(10,7,$eleve->id,1,0,"C");
+            $pdf->Cell(100,7,$eleve->last_name.' '.$eleve->first_name,1,0,"C");           
+        $mAmount = (int) $eleve->account->amount_paid;
+        $mFees = (int) $eleve->account->fees;
+            $reste =0;
+        if($mAmount && $mFees)
+        $reste = $mFees - $mAmount;
+        // arrieres dus
+        $pdf->Cell(50,7,$reste,1,0,"C");
+        // absences
+        $absences = $eleve->absences;
+        $ab =0;
+        foreach ($absences as $absence) {
+            $ab += $absence->absence;
+        }
+        $pdf->Cell(35,7,$ab,1,0,"C");
+        $pdf->Ln(7);
+        }
+
+        $pdf->output('D','LISTE_'.strtoupper($classe->category.'_'.$classe->level.'_'.$classe->module).'.pdf',1);
+    }
 }
 
