@@ -412,9 +412,11 @@ class PdfController extends Controller
             $pdf->Cell(35,7,$header[3],1,0,"C");
 
          $pdf->Ln();
+         $j=0;
         foreach ($classe->eleves as $eleve) {
-            $pdf->Cell(10,7,$eleve->id,1,0,"C");
-            $pdf->Cell(100,7,$eleve->last_name.' '.$eleve->first_name,1,0,"C");           
+            $pdf->Cell(10,7,$j,1,0,"C");
+            $j++;
+            $pdf->Cell(100,7,$eleve->last_name.' '.$eleve->first_name,1,0,"L");           
         $mAmount = (int) $eleve->account->amount_paid;
         $mFees = (int) $eleve->account->fees;
             $reste =0;
