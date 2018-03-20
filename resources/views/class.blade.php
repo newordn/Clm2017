@@ -152,7 +152,7 @@ CLASS/CLASSES
 								<div class="card-title">
 									<h5>UPPER INTERMEDIATE<a href="file:///home/neword/Desktop/cours"><i class="fa fa-book"></i></a></h5>
 								</div>
-								<p><a class="btn waves-effect waves-light modal-trigger" href="/class/Juniors-Juniors/Upper/A">A</a><a class="btn waves-effect waves-light modal-trigger" href="/class/Juniors-Juniors/Upper/B">B</a></p>
+								<p><a class="btn waves-effect waves-light modal-trigger" href="/class/Juniors-Juniors/Upper Intermediate/A">A</a><a class="btn waves-effect waves-light modal-trigger" href="/class/Juniors-Juniors/Upper Intermediate/B">B</a></p>
 							</div>
 						</div>
 					<!--Uper intermediate-->
@@ -322,7 +322,7 @@ CLASS/CLASSES
 								<div class="card-title">
 									<h5>UPPER INTERMEDIATE<a href="file:///home/neword/Desktop/cours"><i class="fa fa-book"></i></a></h5>
 								</div>
-								<p><a class="btn waves-effect waves-light modal-trigger" href="/class/Adultes-Adults/Upper/A">A</a><a class="btn waves-effect waves-light modal-trigger" href="/class/Adultes-Adults/Upper/B">B</a></p>
+								<p><a class="btn waves-effect waves-light modal-trigger" href="/class/Adultes-Adults/Upper Intermediate/A">A</a><a class="btn waves-effect waves-light modal-trigger" href="/class/Adultes-Adults/Upper Intermediate/B">B</a></p>
 							</div>
 						</div>
 					<!--  Uper Intermediate-->			

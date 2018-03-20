@@ -102,7 +102,6 @@ class UserController extends Controller
             session(['login'=>$loginRequest->login]);
             if($loginRequest->input('login') == "admin" | $loginRequest->input('password')=="mek00so")
             session(['admin'=>'yes']);
-            if($loginRequest->input('login') == "FOUNSIE TANKA MAMA")
             session(['register'=>'yes']);    
             return redirect('/');
         }

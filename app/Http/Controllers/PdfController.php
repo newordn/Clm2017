@@ -401,7 +401,7 @@ class PdfController extends Controller
         $classe = $eleve->classe;
 
         // definition de l'entete
-        $header = array('ID', 'NOMS ET PR'.utf8_decode("É").'NOMS', 'ARRI'.utf8_decode("É").'R'.utf8_decode("É").'S D'.utf8_decode("Û").'S','ABSENCES');
+        $header = array('ID', 'NOMS ET PR'.utf8_decode("É").'NOMS', 'ARRI'.utf8_decode("É").'R'.utf8_decode("É").'S D'.utf8_decode("Û").'S','PAID');
         // affichage de l'entete
         $pdf->Ln(15);
             $pdf->Cell(300,7,"LISTE DE ".strtoupper($classe->category.' '.utf8_decode($classe->level).' '.$classe->module).' DU '.date("y-m-d h:m"),0,0,"L");
@@ -429,12 +429,14 @@ class PdfController extends Controller
         // arrieres dus
         $pdf->Cell(47,7,$reste,1,0,"C");
         // absences
-        $absences = $eleve->absences;
+        /*$absences = $eleve->absences;
         $ab =0;
         foreach ($absences as $absence) {
             $ab += $absence->absence;
         }
-        $pdf->Cell(30,7,$ab,1,0,"C");
+*/
+	// SOMME VERSee
+        $pdf->Cell(30,7,$mAmount,1,0,"C");
         $pdf->Ln(7);
         }
 
