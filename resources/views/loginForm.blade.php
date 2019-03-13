@@ -5,13 +5,13 @@
 							<!-- start of login -->
 							<div class="input-field center-align">
 								<button class="btn btn-large"><i class="fa fa-user"></i></button>
-								<input id="login" name="login" type="text"/>
+								<input id="login" name="login" type="text" placeholder="Entrer votre identifiant"/>
 							</div>
 						<!-- end of login -->
 						<!-- start of password -->
 							<div class="input-field center-align">
 								<button class="btn btn-large"><i class="fa fa-lock"></i></button>
-								<input id="password" name="password" type="password"/>
+								<input id="password" name="password" type="password" placeholder="Entrer votre mot de passe"/>
 							</div>
 						<!-- end of password -->
 						<!-- start of login btn-->

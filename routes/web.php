@@ -70,3 +70,10 @@ Route::get('absence/{eleve_id}',['uses'=>'AbsenceController@setAbsence','as'=>'a
 Route::get('search/{matricule}',['uses'=>'SearchController@search1','as'=>'search1']);
 Route::post('/search',['uses'=>'SearchController@search','as'=>'search']);
 
+
+// terms route
+
+
+Route::get('terms',['uses'=>'TermsController@getTerms','as'=>'terms']);
+Route::post('terms', ['uses'=> 'TermsController@postTerm', 'as' => 'termSave']);
+Route::get('close_term/{term_id}',['uses'=>'TermsController@closeTerm','as'=>'closeTerm']);

@@ -35,7 +35,7 @@ class Classe extends Migration
     public function down()
     {
         // to delete a class
-       
-        Schema:drop('classe');
+
+        Schema::drop('classe');
     }
 }
