@@ -53,13 +53,11 @@ Class ClassRepository implements ClassRepositoryInterface
         $classe->category = $request->input('category');
         $classe->level = $request->input('level');
         $classe->module = $request->input('module');
+        $classe->amount = $request->input('amount');
+        $classe->year =  date("Y-m-d");
         $classe->start_of_module = $request->input('start_of_module');
-        if($classe->category=="Juniors-Juniors")
-        $classe->amount = 15000;
-        else
-            $classe->amount = 20000; 
-        $classe->year = date("Y-m-d");
+        $classe->term_id = $request->input('term_id');
         $classe->save();
-        return redirect("/class/".$classe->category."/".$classe->level."/".$classe->module[0]);
+        return redirect('/term/' . $request->input('term_id'));
     }
  }

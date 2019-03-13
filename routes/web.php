@@ -45,7 +45,7 @@ Route::get('showClass/{category}/{level}/{module}','ClassController@show');
 
 Route::get('class/{category}/{level}/{module}','ClassController@propose');
 
-Route::post('newClass','ClassController@create');
+Route::post('new_class','ClassController@create');
 
 
 Route::get('class',['uses'=>'ClassController@getClass','as'=>'class']);
@@ -75,5 +75,7 @@ Route::post('/search',['uses'=>'SearchController@search','as'=>'search']);
 
 
 Route::get('terms',['uses'=>'TermsController@getTerms','as'=>'terms']);
+Route::get('term/{term_id}',['uses'=>'TermsController@getTerm','as'=>'term']);
+
 Route::post('terms', ['uses'=> 'TermsController@postTerm', 'as' => 'termSave']);
 Route::get('close_term/{term_id}',['uses'=>'TermsController@closeTerm','as'=>'closeTerm']);

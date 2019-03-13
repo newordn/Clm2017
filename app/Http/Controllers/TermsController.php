@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\TermRepository;
 use App\Http\Requests\TermRequest;
-
+use App\Classe;
 class TermsController extends Controller
 {
     public function getTerms(TermRepository $termRepository)
@@ -25,6 +25,11 @@ class TermsController extends Controller
          $termRepository->save($termRequest);
         return redirect("/terms");
 
+    }
+    public function getTerm($term_id)
+    {
+        $classes = Classe::where('term_id',$term_id)->get();
+        return view("/class")->withtermId($term_id)->withclasses($classes);
     }
  
 

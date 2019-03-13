@@ -16,8 +16,7 @@ CLASS/CLASSES
 						<p>Date de fin: {{$term->end_term}}</p>
 					</div>
 					<div class="card-action">
-
-						<a class="btn-large waves-effect waves-light blue" href="{{route('class')}}">Ouvrir</a>
+						<a class="btn-large waves-effect waves-light blue" href="{{'/term/'.$term->id}}">Ouvrir</a>
 						<a class="btn-large waves-effect waves-light red" href="{{'/close_term/'.$term->id}}">Fermer</a>
 					</div>
 				</div>
@@ -25,12 +24,12 @@ CLASS/CLASSES
 		@endforeach
 	</div>
 	<div style="position:fixed;bottom:3rem;right:1rem">
-		<a href="#classCreationModal" class="btn-floating modal-trigger btn-large waves-effect waves-light blue">
+		<a href="#termCreationModal" class="btn-floating modal-trigger btn-large waves-effect waves-light blue">
 			<i class="fa fa-plus"></i>
 		</a>
 	</div>
 	 <!-- Modal Structure -->
-  <div id="classCreationModal" class="modal">
+  <div id="termCreationModal" class="modal">
     <div class="modal-content">
       <h4 class="center-align">Ouvrir un trimestre</h4>
       <form method="post" action="{{route('termSave')}}">
@@ -49,7 +48,7 @@ CLASS/CLASSES
       	 <label for="endDate">A</label>
       	 <input type="date" name="end_term" id="endDate" value="2019-04-01">
 		  <div class="modal-footer">
-			  <button href="#!" class=" waves-effect waves-green green btn-flat" type="submit"><i class="fa fa-check"></i></button>
+			  <button href="#" class=" waves-effect waves-green green btn-flat" type="submit"><i class="fa fa-check"></i></button>
 
 			  <a href="#!" class=" modal-close waves-effect waves-green btn-flat red"><i class="fa fa-close"></i></a>
 		  </div>
