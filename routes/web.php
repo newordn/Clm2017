@@ -38,12 +38,11 @@ Route::get('tresorerie',['uses'=>'TresorerieController@getTresor','as'=>'tresore
 
 // to show the student for a particular class
 
-Route::get('showClass/{category}/{level}/{module}','ClassController@show');
+Route::get('showClass/{termId}/{category}/{level}/{module}','ClassController@show');
 
 // classes routes
 // to propose all the classes
 
-Route::get('class/{category}/{level}/{module}','ClassController@propose');
 
 Route::post('new_class','ClassController@create');
 
@@ -67,7 +66,7 @@ Route::post('bulletin',['uses'=>'BulletinController@postBulletin','as'=>'bulleti
 Route::get('absence/{eleve_id}',['uses'=>'AbsenceController@setAbsence','as'=>'absence']);
 
 // searchs route
-Route::get('search/{matricule}',['uses'=>'SearchController@search1','as'=>'search1']);
+Route::get('search/{student_id}',['uses'=>'SearchController@search1','as'=>'search1']);
 Route::post('/search',['uses'=>'SearchController@search','as'=>'search']);
 
 
@@ -76,6 +75,7 @@ Route::post('/search',['uses'=>'SearchController@search','as'=>'search']);
 
 Route::get('terms',['uses'=>'TermsController@getTerms','as'=>'terms']);
 Route::get('term/{term_id}',['uses'=>'TermsController@getTerm','as'=>'term']);
+Route::post('open_term/{term_id}',['uses'=>'TermsController@openTerm','as'=>'reactivateTerm']);
 
 Route::post('terms', ['uses'=> 'TermsController@postTerm', 'as' => 'termSave']);
 Route::get('close_term/{term_id}',['uses'=>'TermsController@closeTerm','as'=>'closeTerm']);
