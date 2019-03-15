@@ -6,32 +6,46 @@ use Illuminate\Http\Request;
 use App\Eleve;
 use App\Account;
 use App\Classe;
+use App\Term;
 class TresorerieController extends Controller
 {
+    public function howMuch($eleves)
+    {
+        $sum = 0;
+        foreach ($eleves as $e) {
+
+            $sum += $e->account["amount_paid"];
+        }
+        return $sum;
+    }
     public function getTresor()
     {
     	$users = Eleve::all()->count();
-    	$classes = Classe::all();
-    	$money = Account::all()->sum('amount_paid');  
+    	$money = Account::all()->sum('amount_paid');
+    	$terms = Term::all();
 		$sum=0;
 		$accounts = array();
 		$amounts = array();
 		$eleves = array();
-		foreach ($classes as $classe) {
-			
-			array_push($eleves,$classe->eleves);
-		}
-			foreach($eleves as $eleve)
-			{
-				$sum=0;
-				foreach ($eleve as $e) {
-					
-					$sum += $e->account["amount_paid"];	
-				}
-				array_push($amounts, $sum);
-			}
-			
-		
-    	return view('tresorerie')->withusers($users)->withmoney($money)->withclasses($classes)->withamounts($amounts);
+		$classess = array();
+		$studentNumber = array();
+		$studentMoney = array();
+		foreach($terms as $term) {
+		    $i=0;
+		    $classes = Classe::where('term_id',$term->id)->get();
+            foreach ($classes as $classe) {
+                array_push($eleves, $classe->eleves);
+
+                array_push($amounts, $this->howMuch($classe->eleves));
+            }
+
+            array_push($classess, $classes);
+            array_push($studentMoney,$this->howMuch($eleves[$i]));
+            array_push($studentNumber, count($eleves[$i]));
+            $i=$i+1;
+            $eleves = array();
+
+        }
+    	return view('tresorerie')->withstudentMoney($studentMoney)->withstudentNumber($studentNumber)->withterms($terms)->withusers($users)->withmoney($money)->withclassess($classess)->withamounts($amounts);
     }
 }

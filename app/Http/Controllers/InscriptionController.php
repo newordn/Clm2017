@@ -25,14 +25,18 @@ class InscriptionController extends Controller
         {
             $id = $inscriptionRepository->save($inscriptionRequest);
     	if($id!=-1 && $id!=0) // si l'eleve a ete inscrit
-    	return view('recuInscription')->withid($id);
+    	return view('recuInscription')->withid($id)->witherror("")->withtermId($inscriptionRequest->input('trimestre'))->withcategory($inscriptionRequest->input('category'))
+            ->withmodule($inscriptionRequest->input('module'))
+            ->withlevel($inscriptionRequest->input('level'));
         else if($id==-1) // si l'eleve est deja inscript
-            return view ('inscription')->witherror("L' APPRENANT(E) EST DÉJA INSCRIT(E).");
-        else // si il y'a erreur lors de l'inscription
-            return view('inscription')->witherror("VEUILLEZ OUVRIR LA CLASSE AU PRÉALABLE.");
+            return view ('recuInscription')->witherror("L' Apprenant(e) est déja inscrit(e).")->withid($id)
+                ->withtermId($inscriptionRequest->input('trimestre'))
+                ->withcategory($inscriptionRequest->input('category'))
+                ->withmodule($inscriptionRequest->input('module'))
+                ->withlevel($inscriptionRequest->input('level'));
         }
         else
-            return redirect('/');
+            return redirect('showClass/'.$inscriptionRequest->input('termId').'/'. $inscriptionRequest->input('category').'/'.$inscriptionRequest->input('level').'/'.$inscriptionRequest->input('module'));
 	}
 
     // to get the modify form for the inscription of a student

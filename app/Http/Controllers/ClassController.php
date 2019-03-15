@@ -10,15 +10,10 @@ class ClassController extends Controller
     {
     	return $classRepository->getClass();
     }
-    public function show(ClassRepository $classRepository, $category,$level,$module)
+    public function show(ClassRepository $classRepository,$termId, $category,$level,$module)
     {
-        return $classRepository->show($category,$level,$module);
+        return $classRepository->show($termId,$category,$level,$module);
     }
- public function propose( ClassRepository $classRepository,$category,$level,$module)
-    {
-        return $classRepository->propose($category,$level,$module);
-    }
-
     public function create(ClassRequest $request, ClassRepository $classRepository)
     {
         return $classRepository->create($request);

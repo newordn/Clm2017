@@ -8,8 +8,7 @@ class SearchController extends Controller
 {
    public function searchInterface($matricule)
     {
-    	$student = Eleve::where('matricule',$matricule)->get()->last();
-    	if($student== null) return redirect('/');
+    	$student = Eleve::where('id',$matricule)->get()->last();
     	$account = $student->account;
         $classe = $student->classe;
     	return view('showAStudent')->withstudent($student)->withaccount($account)->withclasse($classe);
@@ -18,9 +17,9 @@ class SearchController extends Controller
     {
     	return $this->searchInterface($request->input('search'));
     }
-	public function search1($matricule)
+	public function search1($student_id)
     {
-		return $this->searchInterface($matricule);
+		return $this->searchInterface($student_id);
     }
 
 }

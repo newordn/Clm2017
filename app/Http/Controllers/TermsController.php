@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\TermRepository;
 use App\Http\Requests\TermRequest;
 use App\Classe;
+use App\Term;
 class TermsController extends Controller
 {
     public function getTerms(TermRepository $termRepository)
@@ -31,6 +32,15 @@ class TermsController extends Controller
         $classes = Classe::where('term_id',$term_id)->get();
         return view("/class")->withtermId($term_id)->withclasses($classes);
     }
- 
 
+    public function openTerm(TermRequest $termRequest,$term_id,TermRepository $termRepository)
+    {
+        if($termRequest->login=="admin" | $termRequest =="mek00so") {
+            $term = Term::where('id', $term_id)->get()->first();
+            $term->status = true;
+            $termRepository->saveOne($term);
+        }
+        return redirect("/terms");
+
+    }
 }
