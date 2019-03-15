@@ -18,6 +18,7 @@ class Users extends Migration
             Schema::create('users', function(Blueprint $table) {
                 $table->increments('id');
                 $table->string('login', 100);
+                $table->string('right',100);
                 $table->string('password', 100);
             });
         
