@@ -18,9 +18,8 @@ class Account extends Migration
             $table->increments('id');
             $table->string('payment');
             $table->string('amount_paid');
-            $table->string('fees'); // the tuitions fees of the student
-            $table->integer('trimestre');
             $table->date('year');
+            $table->string('paymentSpec');
             $table->integer('eleve_id')->unsigned();
             $table->foreign('eleve_id')
                   ->references('id')

@@ -21,6 +21,7 @@ class Classe extends Migration
             $table->string('category');
             $table->date('start_of_module');
             $table->integer('amount');
+            $table->string('indice');
             $table->date('year');
             $table->integer('term_id')->unsigned();
             $table->foreign('term_id')

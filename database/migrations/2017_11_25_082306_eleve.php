@@ -19,7 +19,6 @@ class Eleve extends Migration
             $table->string('matricule');
             $table->string('last_name');
             $table->string('first_name');
-            $table->string('img');
             $table->integer('classe_id')->unsigned();
             $table->foreign('classe_id')
                   ->references('id')
