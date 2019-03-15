@@ -34,10 +34,16 @@ CLASS/CLASSES
       <form method="post" action="{{url('/new_class')}}">
 
 		  <!--categorie -->
-		  <div class=" input-field">
-			  <label for="category" style="color:black">CATÉGORIE/GATEGORY</label>
+		  <div class="center-align">
+			  <label for="category"><strong>CATÉGORIE/CATEGORY</strong></label>
 			  <!-- Dropdown Structure -->
-			  <input name="category" id="category" type="text">
+			  <select name="category" id="category">
+				  <option value="Juniors" selected>Juniors</option>
+				  <option value="Adults" >Adults</option>
+				  <option value="Adultes" >Adultes</option>
+				  <option value="Special">Special</option>
+				  <option value="One-to-one">One-to-One</option>
+			  </select>
 
 		  </div>
 		  <!-- categorie -->
@@ -68,9 +74,22 @@ CLASS/CLASSES
 
 
 		  <!-- module -->
-		  <div class="input-field">
-			  <input id="module" type="text"  name="module">
-			  <label for="module" style="color:black">MODULE/MODULE</label>
+		  <div class="center-align">
+			  <label for="module"><strong>MODULE/MODULE</strong></label>
+			  <select id="module" name="module">
+				  <option  value="A1">A1</option>
+				  <option  value="A2">A2</option>
+				  <option  value="A3">A3</option>
+				  <option  value="A4">A4</option>
+				  <option  value="A5">A5</option>
+				  <option  value="A6">A6</option>
+				  <option  value="B1">B1</option>
+				  <option  value="B2">B2</option>
+				  <option  value="B3">B3</option>
+				  <option  value="B4">B4</option>
+				  <option  value="B5">B5</option>
+				  <option  value="B6">B6</option>
+			  </select>
 		  </div>
 		  <!-- module -->
 
