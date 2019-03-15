@@ -5,7 +5,7 @@
                 <div class="conteneur">
                <div class="row">
                    <div class="col s6 right-align">
-                       <a href="{{route('courses')}}"><div class="cercle  blue"><strong>COURSES/COURS</strong></div></a>
+                       <a href="{{url('courses')}}"><div class="cercle  blue"><strong>COURSES/COURS</strong></div></a>
                    </div>
 
                    <div class="col s6 left-align">

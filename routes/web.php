@@ -81,4 +81,8 @@ Route::post('terms', ['uses'=> 'TermsController@postTerm', 'as' => 'termSave']);
 Route::get('close_term/{term_id}',['uses'=>'TermsController@closeTerm','as'=>'closeTerm']);
 
 // courses route
-Route::get('courses',['users'=>'TermsController@getTerms','as'=>'courses']);
+Route::get('courses',['uses'=>'CourseController@getCourses','as'=>'courses']);
+
+// rights route
+
+Route::post('right',['uses'=>'RightController@setRight','as'=>'setRight']);
