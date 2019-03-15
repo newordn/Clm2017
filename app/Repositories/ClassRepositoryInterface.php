@@ -6,7 +6,6 @@ interface ClassRepositoryInterface
 {
 
     public function getClass();
-    public function show($category,$level,$module);
-    public function propose( $category,$level,$module);
+    public function show($termId,$category,$level,$module);
     public function create($request);
 }

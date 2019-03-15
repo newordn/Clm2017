@@ -34,4 +34,9 @@ Class TermRepository implements TermRepositoryInterface
         $this->term->save();
 
     }
+    public function saveOne($term)
+    {
+        $this->term = $term;
+        $this->term->save();
+    }
 }

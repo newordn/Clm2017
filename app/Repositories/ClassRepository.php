@@ -14,38 +14,14 @@ Class ClassRepository implements ClassRepositoryInterface
     	return view('class');
     }
 
-    public function show($category,$level,$module)
+    public function show($termId,$category,$level,$module)
     {
-
-        $classes = Classe::where([['category',$category],['level',$level],['module',$module]])->get();
-        $students = array();
-        $absences = array();
-       
-        foreach ($classes as $classe) {
-
-            array_push($students, $classe->eleves()->get());
-        }
-        
-       
-        if($students[0]!=null)
-    	return view('show')->withstudents($students[0]);
-        else
-        return view('show')->withstudents([]);
+        $classe = Classe::where([['term_id',$termId],['category',$category],['level',$level],['module',$module]])->get()->first();
+        return view('show')->withstudents($classe->eleves()->get())->
+        withcategory($category)->withlevel($level)->withmodule($module)->withtermId($termId)->withamount($classe->amount);
             
     }
 
-
-    public function propose( $category,$level,$module)
-    {
-
-        $classes = Classe::where([['category',$category], ['level',$level],['module','like',$module."%"]])->get();
-        $modules = array();
-        foreach ($classes as $classe) {
-            array_push($modules, $classe->module);
-        }
-
-    	return view('proposeClass')->withmodules($modules)->withcategory($category)->withlevel($level)->withradical($module[0]);
-    }
 
     public function create( $request)
     {
@@ -54,9 +30,10 @@ Class ClassRepository implements ClassRepositoryInterface
         $classe->level = $request->input('level');
         $classe->module = $request->input('module');
         $classe->amount = $request->input('amount');
-        $classe->year =  date("Y-m-d");
+        $classe->year =  date("Y-m-d h-m-s");
         $classe->start_of_module = $request->input('start_of_module');
         $classe->term_id = $request->input('term_id');
+        $classe->indice = $request->input('indice');
         $classe->save();
         return redirect('/term/' . $request->input('term_id'));
     }

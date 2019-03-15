@@ -7,14 +7,13 @@ CLASS/CLASSES
 		<h2 class="center-align">Les classes</h2>
 		<div class="row">
 		@foreach($classes as $class)
-			<div class="card col s4 margin-right ">
+			<div class="card col s6  ">
 				<div class="card-content">
-					<span class="card-title">{{$class->level}} {{$class->category}} {{$class->module}}</span>
+					<span class="card-title">{{$class->level}} {{$class->category}} {{$class->module}}  {{$class->indice}}</span>
 					<p>Date de début : {{$class->start_of_module}} </p>
-
 				</div>
 				<div class="card-action">
-					<a class="btn-large waves-effect waves-light blue" href="{{'/term/'.$termId}}">Ouvrir</a>
+					<a class="btn-large waves-effect waves-light blue" href="{{'/showClass/'.$termId. '/' .$class->category . '/' . $class->level .'/'. $class->module}}">Ouvrir</a>
 					<a class="btn-large waves-effect waves-light red" href="{{'/term/'.$termId}}">Modifier</a>
 				</div>
 			</div>
@@ -33,28 +32,16 @@ CLASS/CLASSES
     <div class="modal-content">
       <h4 class="center-align">Ouvrir une classe</h4>
       <form method="post" action="{{url('/new_class')}}">
-		  <!-- Frais des cours -->
-		  <div class="input-field">
-			  <input type="text" name="amount" id="amount">
-			  <label for="amount" style="color:black">FRAIS DES COURS/TUITION FEES</label>
-		  </div>
-		  <!-- Frais des cours -->
-		  <!-- module -->
-		  <div class="input-field">
-			  <input id="module" type="text"  name="module">
-			  <label for="module" style="color:black">MODULE/MODULE</label>
-		  </div>
-		  <!-- module -->
+
 		  <!--categorie -->
-		  <div class=" center-align">
-			  <label for="category"><strong>CATÉGORIE/GATEGORY</strong></label>
+		  <div class=" input-field">
+			  <label for="category" style="color:black">CATÉGORIE/GATEGORY</label>
 			  <!-- Dropdown Structure -->
-			  <select name="category" id="category" @yield('category')>
-				  <option selected>Juniors/Juniors</option>
-				  <option>Adultes/Adults</option>
-			  </select>
+			  <input name="category" id="category" type="text">
+
 		  </div>
 		  <!-- categorie -->
+
 		  <!-- niveau -->
 		  <div class="center-align">
 			  <label for="niveau"><strong>NIVEAU/LEVEL</strong></label>
@@ -77,13 +64,45 @@ CLASS/CLASSES
 
 			  </select>
 		  </div>
+		  <!-- niveau -->
 
-			  <!-- start of module -->
-			  <div class=" center-align">
-				  <label for="start_of_module"><strong>Début du module</strong></label>
-				  <input type="date" name="start_of_module" value="2019-04-03">
-			  </div>
-			  <!-- start of module -->
+
+		  <!-- module -->
+		  <div class="input-field">
+			  <input id="module" type="text"  name="module">
+			  <label for="module" style="color:black">MODULE/MODULE</label>
+		  </div>
+		  <!-- module -->
+
+
+		  <!-- indice -->
+		  <div class="center-align">
+
+			  <label for="indice"><strong>INDICE DE LA CLASSE</strong></label>
+			  <select name="indice" id="indice" >
+				  <option selected>&nbsp;</option>
+				  <option>EEV</option>
+				  <option>LEV</option>
+			  </select>
+		  </div>
+		  <!-- indice -->
+
+
+
+		  <!-- start of module -->
+		  <div class=" center-align">
+			  <label for="start_of_module"><strong>DEBUT DU MODULE</strong></label>
+			  <input type="date" name="start_of_module" value="2019-04-03">
+		  </div>
+		  <!-- start of module -->
+
+		  <!-- Frais des cours -->
+		  <div class="input-field">
+			  <input type="text" name="amount" id="amount">
+			  <label for="amount" style="color:black">FRAIS DES COURS/TUITION FEES</label>
+		  </div>
+		  <!-- Frais des cours -->
+
 			  <!-- term id-->
 			  <input type="hidden" name="term_id" value="{{$termId}}">
 			  <!-- term id-->

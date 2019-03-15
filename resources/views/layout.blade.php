@@ -37,7 +37,7 @@
              </div>
       </div>
         @yield('body')
-        <footer class="page-footer blue  @yield('footer')">
+        <footer class="page-footer blue  footer_home">
             <div class="page-copyright center-align">
                 <i class="fa fa-copyright" aria-hidden="true"></i><em><strong>Centre Linguistique De Maroua 2017.</strong></em>
 

@@ -1,28 +1,63 @@
 @extends('layout')
 @section('body')
-<div class="row" style="padding:10px;">
-	<h4 class="center-align">NOMBRE D'APPRENANT(E)S ET TRÉSORERIE DANS TOUS LE CENTRE.</h4>
-	<div class="card col s6 center-align ">
-		<h4>{{$users}} <i class="fa fa-user"></i></h4>
+<div class="row container" style="padding:10px;margin-bottom: 4rem;">
+
+	<div class="center-align" style="margin-top:15px">
+		<a class="waves-effect waves-light btn blue " href="{{'/'}}"><i class="fa fa-backward"></i> Retour</a>
 	</div>
-	<div class="card center-align col s6">
-		<h4><strong>{{$money}}</strong> FRANCS</h4>
-	</div>	
+	<h4 class="center-align" style="margin-bottom:2rem;" >Statistique du centre linguistique de Maroua</h4>
+	<table class="striped bordered " style="border:1px solid gray" >
+		<thead style="border:1px solid gray">
+		<tr style="border:1px solid gray">
+			<th style="border:1px solid gray">Groupes d'utilisateurs</th>
+			<th style="border:1px solid gray" class="center-align">Nombre</th>
+			<th style="border:1px solid gray">Caisse</th>
+		</tr>
+		</thead>
+		<tbody style="border:1px solid gray">
+		<tr style="border:1px solid gray">
+			<td style="border:1px solid gray">Centre Linguistique</td>
+			<td style="border:1px solid gray" class="center-align">{{$users}}</td>
+			<td style="border:1px solid gray"><strong>{{$money}}</strong> Francs</td>
+		</tr>
+		</tbody>
+	</table>
+		@php($j=0)
+	@foreach($terms as $term)
+		<h4 class="center-align">Trimestre {{$term->term_num}}</h4>
+	<table class="striped bordered " style="border:1px solid gray" >
+		<thead style="border:1px solid gray">
+		<tr style="border:1px solid gray">
+			<th style="border:1px solid gray">Groupes d'utilisateurs</th>
+			<th style="border:1px solid gray" class="center-align">Nombre d'apprenant</th>
+			<th style="border:1px solid gray">Caisse</th>
+		</tr>
+		</thead>
+		<tbody style="border:1px solid gray">
+		<tr style="border:1px solid gray">
+			<td style="border:1px solid gray">Centre Linguistique</td>
+			<td style="border:1px solid gray" class="center-align">{{$studentNumber[$j]}}</td>
+			<td style="border:1px solid gray"><strong>{{$studentMoney[$j]}}</strong> Francs</td>
+		</tr>
+		@php($i=0)
+		@foreach($classess[$j] as $classe)
+		<tr style="border:1px solid gray">
+			<td style="border:1px solid gray">{{$classe->category}} {{$classe->level}} {{$classe->module}}</td>
+
+					<td style="border:1px solid gray" class="center-align"> {{count($classe->eleves)}} </td>
+
+				<td style="border:1px solid gray"><strong>{{$amounts[$j]}}</strong> Francs</td>
+
+
+		</tr>
+		@php($i=$i+1)
+		@endforeach
+		</tbody>
+	</table>
+
+		@php($j=$j+1)
+		@endforeach
 </div>
 
-<div class="row center-align" style="padding:0px 10px 10px 10px;">
-	<h4 >NOMBRE D'APPRENANT(E)S ET TRÉSORERIE PAR CLASSE.</h4>
-	@php($i=0)
-	@foreach($classes as $classe)
-	<h5 style="color:blue;"><button class="btn blue">{{$classe->category}} {{$classe->level}} {{$classe->module}}</button></h5>
-	<div class="card col s6 center-align ">
-		<h4> {{count($classe->eleves)}} <i class="fa fa-user"></i></h4>
-	</div>
-	<div class="card center-align col s6">
-		<h4><strong>{{$amounts[$i]}}</strong> FRANCS</h4>
-		@php($i=$i+1)
-	</div>
-	@endforeach
-</div>
 
 @stop

@@ -4,7 +4,7 @@
 			@include('loginForm')
 			
            <div class="conteneur">
-                 <a href="{{route('inscription')}}"><div class="cercle green"><strong>INSCRIPTION/INSCRIPTION</strong></div></a>
+                 <a href="{{route('tresorerie')}}"><div class="cercle green"><strong>STATISTIQUES/INSIGHTS</strong></div></a>
                <a href="{{url('administration')}}"> <div class="cercle red"><strong>ADMINISTRATION/ADMINISTRATION</strong></div></a> <a href="{{route('terms')}}"><div class="cercle class yellow"><strong>Trimestres/Terms</strong></div></a>
             </div>
         @stop
@@ -13,6 +13,3 @@
            	<script type="text/javascript">$('.modal').modal({dismissible:false});$('#loginModal').modal('open');</script>
            @endsection
          @endif
-        @section('footer')
-        footer_home
-        @stop

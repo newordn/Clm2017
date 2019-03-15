@@ -6,9 +6,13 @@ CLASS/CLASSES
 
 	<div class="container row">
 		<h2 class="center-align">Les trimestres</h2>
+
+		<div class="center-align" style="margin-top:15px">
+			<a class="waves-effect waves-light btn blue " href="{{'/'}}"><i class="fa fa-backward"></i> Retour</a>
+		</div>
 		@foreach($terms as $term)
 
-				<div class="card col s4 margin-right "
+				<div class="card col s4 "
 				@if(!$term->status) style="background-color:rgb(200,200,200)" @endif>
 					<div class="card-content">
 						<span class="card-title">Trimestre {{$term->term_num}}</span>
@@ -16,11 +20,37 @@ CLASS/CLASSES
 						<p>Date de fin: {{$term->end_term}}</p>
 					</div>
 					<div class="card-action">
+						@if($term->status)
 						<a class="btn-large waves-effect waves-light blue" href="{{'/term/'.$term->id}}">Ouvrir</a>
+						@else
+							<a class="btn-large waves-effect waves-light blue modal-trigger" href="{{'#accessRightModal'.$term->id}}">Ouvrir</a>
+
+							<!-- Modal Structure -->
+							<div id="{{'accessRightModal'.$term->id}}" class="modal">
+								<div class="modal-content">
+									<h4 class="center-align">Vous devez être le directeur</h4>
+									<form method="post" action="{{'/open_term/'.$term->id}}">
+										<input type="text" placeholder="Login" name="login">
+										<input type="text" placeholder="Mot de passe" name="password">
+										<!-- csrf -->
+										<input type="hidden" name="_token" value="{{ csrf_token() }}" >
+										<!--csrf-->
+										<div class="right-align">
+											<button type="button" class="btn-large  waves-effect waves-light red ">
+												<i class="fa fa-close"></i>
+											</button>
+											<button type="submit" class="btn-large  waves-effect waves-light green ">
+												<i class="fa fa-check"></i>
+											</button>
+										</div>
+									</form>
+								</div>
+
+							</div>
+						@endif
 						<a class="btn-large waves-effect waves-light red" href="{{'/close_term/'.$term->id}}">Fermer</a>
 					</div>
 				</div>
-
 		@endforeach
 	</div>
 	<div style="position:fixed;bottom:3rem;right:1rem">
@@ -28,6 +58,8 @@ CLASS/CLASSES
 			<i class="fa fa-plus"></i>
 		</a>
 	</div>
+
+
 	 <!-- Modal Structure -->
   <div id="termCreationModal" class="modal">
     <div class="modal-content">
