@@ -18,6 +18,25 @@ class TresorerieController extends Controller
         }
         return $sum;
     }
+
+    public function howMuchForAllStudentOfATerm($elevess)
+    {
+        $sum = 0;
+        foreach ($elevess as $eleves)
+        {
+            $sum+=$this->howMuch($eleves);
+        }
+        return $sum;
+    }
+    public function howMany($eleves)
+    {
+        $sum = 0;
+        foreach ($eleves as $e) {
+            $sum+= count($e);
+        }
+        return $sum;
+    }
+
     public function getTresor()
     {
     	$users = Eleve::all()->count();
@@ -40,8 +59,8 @@ class TresorerieController extends Controller
             }
 
             array_push($classess, $classes);
-            array_push($studentMoney,$this->howMuch($eleves[$i]));
-            array_push($studentNumber, count($eleves[$i]));
+            array_push($studentMoney,$this->howMuchForAllStudentOfATerm($eleves));
+            array_push($studentNumber,$this->howMany($eleves));
             $i=$i+1;
             $eleves = array();
 

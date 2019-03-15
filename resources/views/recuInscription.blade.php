@@ -11,12 +11,12 @@ RECU D'INSCRIPTION
 		</div>
 		@endif
 
-			<div class="center-align">
-				<a class="btn-large green" href="{{'/showClass/'. $termId. '/'.$category. '/' .$level. '/' .$module}}">Retour</a>
-			</div>
+		<div class="center-align">
+			<a class="btn-large green" href="{{'/showClass/'. $termId. '/'.$category. '/' .$level. '/' .$module}}">Retour</a>
+		</div>
 	<!-- impression du recu d'inscription -->
 		<div class=" center-align card" style="font-size:40px;margin-top:50px;padding:10px;background-color: rgb(87,100,144);">
-		Vous pouvez a présent télécharger le recu d'inscription en appuyant sur ce bouton <a href="/pdf_inscription/{{$id}}" class="btn blue"><i class="fa fa-download"></i></a>.
+		Vous pouvez  télécharger le reçu d'inscription en appuyant sur ce bouton <a href="/pdf_inscription/{{$id}}" class="btn blue"><i class="fa fa-download"></i></a>.
 		</div>
 	<!-- impression du recu d'inscription -->
 	<!-- modification de l'inscription -->
