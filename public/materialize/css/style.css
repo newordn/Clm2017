@@ -53,12 +53,17 @@
 	margin:5px;
 	padding: 20px;
 }
+tr, th,td
+{
+	border: 1px solid gray;
+}
 
 	/*footer*/
 .footer_home
 {
-	position:absolute;
+	position:fixed;
 	bottom:0px;
+	z-index: 20000;
 	width:100%;
 	background-color: #888888;
 	text-align: center;
