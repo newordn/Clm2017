@@ -96,12 +96,14 @@ class UserController extends Controller
      */
     public function login(LoginRepository $loginRepository, LoginRequest $loginRequest)
     {
-        if($loginRepository->login($loginRequest))
+        $bool =$loginRepository->login($loginRequest);
+        if($bool)
         {
             session(['authentificated'=>'yes']);
             session(['login'=>$loginRequest->login]);
-            if($loginRequest->input('login') == "admin" | $loginRequest->input('password')=="mek00so")
+            if($bool=="admin")
             session(['admin'=>'yes']);
+            else if($bool=="register")
             session(['register'=>'yes']);    
             return redirect('/');
         }
