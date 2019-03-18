@@ -40,10 +40,105 @@
 					<a href="{{'/search/'.$student->id}}" class="btn green">
 						<i class="fa fa-search"></i>
 					</a>
-					<a href="{{'/forward/'.$student->id}}" class="btn blue">
+					<a href="{{'#forwardingModal'. $student->id}}" class="btn blue  modal-trigger">
 						<i class="fa fa-forward"></i>
 					</a>
 				</td>
+				<div id="{{'forwardingModal'. $student->id}}" class="modal">
+					<div class="modal-content">
+						<h5 class="center-align">Transferer un apprenant dans une autre classe</h5>
+						<form method="post" action="{{'/forward/'.$student->id}}">
+							<!--categorie -->
+							<div class="center-align">
+								<label for="category"><strong>CATÉGORIE/CATEGORY</strong></label>
+								<!-- Dropdown Structure -->
+								<select name="category" id="category">
+									<option value="Juniors" selected>Juniors</option>
+									<option value="Adults" >Adults</option>
+									<option value="Adultes" >Adultes</option>
+									<option value="Special">Special</option>
+									<option value="One-to-one">One-to-One</option>
+								</select>
+
+							</div>
+							<!-- categorie -->
+
+							<!-- niveau -->
+							<div class="center-align">
+								<label for="niveau"><strong>NIVEAU/LEVEL</strong></label>
+								<!-- Dropdown Structure -->
+								<select name="level" id="niveau" >
+									<option selected>Débutant</option>
+									<option>Foundation</option>
+									<option>Elémentaire</option>
+									<option>Elementary</option>
+									<option>Pré Intermédiaire</option>
+									<option>Lower Intermediate</option>
+									<option>Intermédiaire</option>
+									<option>Intermediate</option>
+									<option>Avancé</option>
+									<option>Upper Intermediate</option>
+									<option>Supérieur</option>
+									<option>Advanced</option>
+									<option>Perfectionnement</option>
+									<option>Advanced Continuation</option>
+
+								</select>
+							</div>
+							<!-- niveau -->
+
+
+							<!-- module -->
+							<div class="center-align">
+								<label for="module"><strong>MODULE/MODULE</strong></label>
+								<select id="module" name="module">
+									<option  value="A1">A1</option>
+									<option  value="A2">A2</option>
+									<option  value="A3">A3</option>
+									<option  value="A4">A4</option>
+									<option  value="A5">A5</option>
+									<option  value="A6">A6</option>
+									<option  value="B1">B1</option>
+									<option  value="B2">B2</option>
+									<option  value="B3">B3</option>
+									<option  value="B4">B4</option>
+									<option  value="B5">B5</option>
+									<option  value="B6">B6</option>
+								</select>
+							</div>
+							<!-- module -->
+
+							<!-- indice -->
+							<div class="center-align">
+								<label for="indice"><strong>INDICE DE LA CLASSE</strong></label>
+								<select name="indice" id="indice" >
+									<option selected>&nbsp;</option>
+									<option>EEV</option>
+									<option>LEV</option>
+								</select>
+							</div>
+							<!-- indice -->
+
+							<div class="center-align">
+
+								<label for="trimestre"><strong>TRIMESTRE</strong></label>
+								<!-- term id-->
+								<input type="number" name="term_id" value="{{$termId}}">
+								<!-- term id-->
+							</div>
+							<!-- csrf -->
+							<input type="hidden" name="_token" value="{{ csrf_token() }}" >
+							<!--csrf-->
+							<!--submit -->
+							<div class="input-field right-align">
+								<button class="btn-floating btn-large red modal-close"><i class="fa fa-close"></i></button>
+								<button class="btn-floating btn-large green"><i class="fa fa-check"></i></button>
+							</div>
+							<!--submit-->
+						</form>
+					</div>
+				</div>
+
 			</tr>
 
 			@endforeach

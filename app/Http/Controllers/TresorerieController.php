@@ -39,32 +39,36 @@ class TresorerieController extends Controller
 
     public function getTresor()
     {
-    	$users = Eleve::all()->count();
-    	$money = Account::all()->sum('amount_paid');
-    	$terms = Term::all();
-		$sum=0;
-		$accounts = array();
-		$amounts = array();
-		$eleves = array();
-		$classess = array();
-		$studentNumber = array();
-		$studentMoney = array();
-		foreach($terms as $term) {
-		    $i=0;
-		    $classes = Classe::where('term_id',$term->id)->get();
-            foreach ($classes as $classe) {
-                array_push($eleves, $classe->eleves);
-
-                array_push($amounts, $this->howMuch($classe->eleves));
-            }
-
-            array_push($classess, $classes);
-            array_push($studentMoney,$this->howMuchForAllStudentOfATerm($eleves));
-            array_push($studentNumber,$this->howMany($eleves));
-            $i=$i+1;
+        if(session('admin')=="yes" | session('register')=="yes" ) {
+            $users = Eleve::all()->count();
+            $money = Account::all()->sum('amount_paid');
+            $terms = Term::all();
+            $sum = 0;
+            $accounts = array();
+            $amounts = array();
             $eleves = array();
+            $classess = array();
+            $studentNumber = array();
+            $studentMoney = array();
+            foreach ($terms as $term) {
+                $i = 0;
+                $classes = Classe::where('term_id', $term->id)->get();
+                foreach ($classes as $classe) {
+                    array_push($eleves, $classe->eleves);
 
+                    array_push($amounts, $this->howMuch($classe->eleves));
+                }
+
+                array_push($classess, $classes);
+                array_push($studentMoney, $this->howMuchForAllStudentOfATerm($eleves));
+                array_push($studentNumber, $this->howMany($eleves));
+                $i = $i + 1;
+                $eleves = array();
+
+            }
+            return view('tresorerie')->withstudentMoney($studentMoney)->withstudentNumber($studentNumber)->withterms($terms)->withusers($users)->withmoney($money)->withclassess($classess)->withamounts($amounts);
         }
-    	return view('tresorerie')->withstudentMoney($studentMoney)->withstudentNumber($studentNumber)->withterms($terms)->withusers($users)->withmoney($money)->withclassess($classess)->withamounts($amounts);
-    }
+        else
+            return redirect('/');
+        }
 }

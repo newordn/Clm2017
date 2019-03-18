@@ -10,14 +10,18 @@ class TermsController extends Controller
 {
     public function getTerms(TermRepository $termRepository)
     {
-        $terms = $termRepository->getTerms();
-        return view('terms')->withTerms($terms);
+        if(session('admin')=="yes" |session('register')=="yes" ) {
+            $terms = $termRepository->getTerms();
+            return view('terms')->withTerms($terms);
+        }
+        return redirect('/');
     }
 
 
-    public function closeTerm(TermRepository $termRepository,$term_id)
+    public function closeTerm(TermRequest $termRequest,TermRepository $termRepository,$term_id)
     {
-        $termRepository->closeTerm($term_id);
+        if(session('admin')=="yes")
+            $termRepository->closeTerm($term_id);
         return redirect("/terms");
     }
     public function postTerm(TermRequest $termRequest,TermRepository $termRepository)
@@ -35,7 +39,7 @@ class TermsController extends Controller
 
     public function openTerm(TermRequest $termRequest,$term_id,TermRepository $termRepository)
     {
-        if($termRequest->login=="admin" | $termRequest =="mek00so") {
+        if(session('admin')=="yes") {
             $term = Term::where('id', $term_id)->get()->first();
             $term->status = true;
             $termRepository->saveOne($term);

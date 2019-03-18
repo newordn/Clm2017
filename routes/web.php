@@ -78,7 +78,7 @@ Route::get('term/{term_id}',['uses'=>'TermsController@getTerm','as'=>'term']);
 Route::post('open_term/{term_id}',['uses'=>'TermsController@openTerm','as'=>'reactivateTerm']);
 
 Route::post('terms', ['uses'=> 'TermsController@postTerm', 'as' => 'termSave']);
-Route::get('close_term/{term_id}',['uses'=>'TermsController@closeTerm','as'=>'closeTerm']);
+Route::post('close_term/{term_id}',['uses'=>'TermsController@closeTerm','as'=>'closeTerm']);
 
 // courses route
 Route::get('courses',['uses'=>'CourseController@getCourses','as'=>'courses']);
@@ -86,3 +86,6 @@ Route::get('courses',['uses'=>'CourseController@getCourses','as'=>'courses']);
 // rights route
 
 Route::post('right',['uses'=>'RightController@setRight','as'=>'setRight']);
+
+// forward a student
+Route::post('/forward/{id}',['uses'=>'ForwardController@forward','as'=>'forward']);

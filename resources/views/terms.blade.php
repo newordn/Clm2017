@@ -45,10 +45,31 @@ CLASS/CLASSES
 										</div>
 									</form>
 								</div>
-
 							</div>
+
+
 						@endif
-						<a class="btn-large waves-effect waves-light red" href="{{'/close_term/'.$term->id}}">Fermer</a>
+							<div id="{{'accessCloseModal'.$term->id}}" class="modal">
+								<div class="modal-content">
+									<h4 class="center-align">Vous devez être le directeur</h4>
+									<form method="post" action="{{'/close_term/'.$term->id}}">
+										<input type="text" placeholder="Login" name="login">
+										<input type="text" placeholder="Mot de passe" name="password">
+										<!-- csrf -->
+										<input type="hidden" name="_token" value="{{ csrf_token() }}" >
+										<!--csrf-->
+										<div class="right-align">
+											<button type="button" class="btn-large  waves-effect waves-light red ">
+												<i class="fa fa-close"></i>
+											</button>
+											<button type="submit" class="btn-large  waves-effect waves-light green ">
+												<i class="fa fa-check"></i>
+											</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						<a class="btn-large waves-effect waves-light red modal-trigger" href="{{'#accessCloseModal'.$term->id}}">Fermer</a>
 					</div>
 				</div>
 		@endforeach

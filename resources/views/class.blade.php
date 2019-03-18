@@ -122,9 +122,9 @@ CLASS/CLASSES
 		  </div>
 		  <!-- Frais des cours -->
 
-			  <!-- term id-->
-			  <input type="hidden" name="term_id" value="{{$termId}}">
-			  <!-- term id-->
+		  <!-- term id-->
+		  	<input type="hidden" name="term_id" value="{{$termId}}">
+		  <!-- term id-->
 		  <!-- csrf -->
 		  <input type="hidden" name="_token" value="{{ csrf_token() }}" >
 		  <!--csrf-->
