@@ -13,4 +13,8 @@ class classe extends Model
     {
     	return $this->hasMany('App\Eleve');
     }
+    public function term()
+    {
+        return $this->hasOne('App\Term');
+    }
 }

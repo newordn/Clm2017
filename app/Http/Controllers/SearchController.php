@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Eleve; 
+use App\Term;
 class SearchController extends Controller
 {
    public function searchInterface($matricule)
@@ -11,7 +12,8 @@ class SearchController extends Controller
     	$student = Eleve::where('id',$matricule)->get()->last();
     	$account = $student->account;
         $classe = $student->classe;
-    	return view('showAStudent')->withstudent($student)->withaccount($account)->withclasse($classe);
+        $termId = Term::find($classe->term_id)->term_num;
+    	return view('showAStudent')->withstudent($student)->withaccount($account)->withclasse($classe)->withtermId($termId);
     } 
     public function search(Request $request)
     {

@@ -10,7 +10,7 @@
 <div class="row">
 
 	<div class=" col s10 left-align"><a href="/pdf_liste_students/" class="btn blue">Imprimer</a></div>
-	<div class=" col s2 right-align"><a href="/pdf_liste_students/" class="btn blue">Cours</a></div>
+	<div class=" col s2 right-align"><a href="/courses" class="btn blue">Cours</a></div>
 
 </div>
 <div class=" row container center-align" style="margin-bottom: 4rem;">
