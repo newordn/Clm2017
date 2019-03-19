@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Codedge\Fpdf\Fpdf\Fpdf;
 use App\Repositories\InscriptionRepository;
 use App\RecuPdf;
+use App\RecuPdf1;
 use App\Bulletin;
+use App\Term;
 
 class PdfController extends Controller
 {
@@ -14,9 +16,9 @@ class PdfController extends Controller
     public function getPdfInscription($id,InscriptionRepository $inscriptionRepository)
     {
         // we define the pdf and font and encodage
-        $pdf  = new RecuPdf();
+        $pdf  = new RecuPdf1();
         $pdf->AddPage();
-        $pdf->SetFont('Times','',16);
+        $pdf->SetFont('Times','',8);
 
         // we write within
             // before we got the student, his account to provide all the informations and his class.
@@ -29,87 +31,124 @@ class PdfController extends Controller
         // we write properly
         $pdf->Cell(0,6,'PROGRAMME DE FORMATION LINGUISTIQUE BILINGUE','0','','C');
         $pdf->Ln();
-        $pdf->SetFont('Times','I',16);
+        $pdf->SetFont('Times','I',10);
         $pdf->Cell(0,6,'BILINGUAL TRAINING PROGRAMME','0','','C'); 
-        $pdf->Ln(9);
+        $pdf->Ln(3);
         
-        $pdf->SetFont('Times','',16);
+        $pdf->SetFont('Times','',10);
         $pdf->Cell(0,6,'CENTRE LINGUISTIQUE REGIONAL DE MAROUA','0','','C');
         $pdf->Ln();
-        $pdf->SetFont('Times','I',16);
+        $pdf->SetFont('Times','I',10);
         $pdf->Cell(0,6,'MAROUA REGIONAL LINGUISTIC CENTRE','0','','C'); 
 
-        $pdf->Ln(9);
+        $pdf->Ln(5);
 
-        $pdf->SetFont('Times','',13);
+        $pdf->SetFont('Times','',10);
         $pdf->Cell(0,5,"RE".utf8_decode("Ç")."U D'INSCRIPTION",'0','','C');
         $pdf->Ln();
-        $pdf->SetFont('Times','I',13);
+        $pdf->SetFont('Times','I',10);
         $pdf->Cell(0,5,'REGISTRATION RECEIPT','0','','C'); 
-        $pdf->Ln(10);
+        $pdf->Ln(5);
         $pdf->cell(10);
         $pdf->SetFont('Times','',10);
         // fix the date
         $date = explode('-',$account->year);
+        $termId = Term::find($classe->term_id)->term_num;
 
         $pdf->Cell(70,5,'Ann'.utf8_decode("é").'e scolaire/Academic year : '.$date[0],'0','','R');
-        $pdf->Cell(40,5,'---> Trimestre/Term : '.$account->trimestre,'0','','C');
-        $pdf->Cell(53,5,'---> P'.utf8_decode("é").'riode/Period :','0','','L');
-        $pdf->Ln(6);
-        $pdf->Cell(0,5,'Identifiant : '.$eleve->matricule,'0','','C');
+        $pdf->Cell(40,5,'Trimestre/Term : '.$termId,'0','','C');
+        $pdf->Cell(0,5,'Identifiant : '.utf8_decode($eleve->matricule),'0','','C');
         $pdf->Ln();
         $pdf->Cell(0,5,"Nom de l'apprenant(e) / Participant's name :",'0','','C');
         $pdf->Ln();
         $pdf->SetFont('Times','B',13);
         $pdf->Cell(0,5,$eleve->last_name.' '.$eleve->first_name,'0','','C');
-        $pdf->Ln(10);
-        $pdf->SetFont('Times','B',12);
-        $pdf->Cell(0,5,'CAT'.utf8_decode("É").'GORIE / CATEGORY : '.str_replace("-","/",$classe->category),'0','','C');
+        $pdf->Ln(5);
+        $pdf->SetFont('Times','',10);
+        $pdf->Cell(0,5,'Cat'.utf8_decode("é").'gorie / category : '.str_replace("-","/",$classe->category),'0','','C');
         $pdf->SetFont('Times','',14);
         $pdf->Ln();
-        $pdf->SetFont('Times','B',14);
+        $pdf->SetFont('Times','',10);
         $pdf->Cell(0,5,'Classe / Class : '.utf8_decode(str_replace("-","/",$classe->level).' '.$classe->module),'0','','C');//.......
         $pdf->SetFont('Times','',14);
        
-        $pdf->Ln(10);
+        $pdf->Ln(5);
         $pdf->cell(10);
-        $pdf->SetFont('Times','',11);
+        $pdf->SetFont('Times','',10);
         $pdf->Cell(105,5,'Mode de paiement/Mode of payment : '.$account->payment,'0','','L');
         if($mAmount)
-        $pdf->Cell(80,5,'---> Somme vers'.utf8_decode("é").'e/Amount paid : '.$account->amount_paid. " Francs",'0','','L');
+        $pdf->Cell(80,5,'Somme vers'.utf8_decode("é").'e/Amount paid : '.$account->amount_paid. " Francs",'0','','L');
         else
-        $pdf->Cell(80,5,'---> Somme vers'.utf8_decode("é").'e/Amount paid : '.$account->amount_paid,'0','','L');
+        $pdf->Cell(80,5,'Somme vers'.utf8_decode("é").'e/Amount paid : '.$account->amount_paid,'0','','L');
         $pdf->Ln(6);
         $pdf->cell(10);
         $reste =0;
         if($mAmount && $mFees)
         $reste = $mFees - $mAmount;
-        $pdf->Cell(90,5,'---> Arri'.utf8_decode("é").'r'.utf8_decode("é").'s d'.utf8_decode("û").'s / Fees Owed :  '.$reste.' Francs','0','','L');
+        $pdf->Cell(90,5,'Arri'.utf8_decode("é").'r'.utf8_decode("é").'s d'.utf8_decode("û").'s / Fees Owed :  '.$reste.' Francs','0','','L');
 
-        $pdf->Ln(8);
+        $pdf->Ln(5);
         $pdf->Cell(10);
-        $pdf->SetFont('Times','',11);
+        $pdf->SetFont('Times','',10);
         $pdf->Cell(80,5,'D'.utf8_decode("é").'but du module / Start of module : '.$classe->start_of_module,'0','','L');
         // $pdf->Cell(35,5,$classe->start_of_module,'0','','C');
-        $pdf->Ln(6);
+        $pdf->Ln(4);
         $pdf->Cell(10);
         if($mFees)
-        $pdf->Cell(60,5,'Frais des cours / Tuition fees : ' .$account->fees." Francs",'0','','L');
+        $pdf->Cell(60,5,'Frais des cours / Tuition fees : ' .$classe->amount." Francs",'0','','L');
         else
-        $pdf->Cell(60,5,'Frais des cours / Tuition fees : ' .$account->fees,'0','','L');
+        $pdf->Cell(60,5,'Frais des cours / Tuition fees : ' .$classe->amount,'0','','L');
         
-        $pdf->Ln(10);
+        $pdf->Ln(5);
         $pdf->Cell(10);
         $pdf->Cell(55,5,'Imprim'.utf8_decode("é").' le : ' .date("Y-m-d h-m-s"),'0','','L');
 
-        $pdf->Ln(10);
+        $pdf->Ln(5);
         $pdf->Cell(10);
         $pdf->Cell(55,5,'Par Mr/Mme : '.session('login') ,'0','','L');
 
-        $pdf->Ln(26);
+        $pdf->Ln(0);
         $pdf->SetFont('Times','B',11);
         $pdf->Cell(0,5,'Le Directeur/The Director :              ','0','','R');
-    	$pdf->output('D','RECU_'.$eleve->last_name.'_'.$eleve->first_name.'.pdf',1);
+        $pdf->Ln(15);
+        // Footer
+        $pdf->SetDrawColor('0','212','0');
+        $pdf->SetFillColor(0,230,0);
+        $pdf->MultiCell(0,1,'','1','','C','true');
+        $pdf->Ln(0);
+
+        $pdf->SetDrawColor('222','0','212');
+        $pdf->SetFillColor(230,0,0);
+        $pdf->MultiCell(0,1,'','1','','C','true');
+        $pdf->Ln(0);
+
+        $pdf->SetDrawColor('230','230','0');
+        $pdf->SetFillColor(230,230,0);
+        $pdf->MultiCell(0,1,'','1','','C','true');
+
+        $pdf->Ln(1);
+        // les centres
+        $pdf->SetFont('Times','B',6);
+        $pdf->Cell(0,4,'Centre Linguistique         Douala Centre        Buea Centre           Bamenda Centre         Ebolowa Centre             Garoua Centre           Bertoua Centre       Baffoussam Centre         Maroua Centre       Ngaound'.utf8_decode("é").'r'.utf8_decode("é").' Centre','0','','J');
+
+
+        //localisation
+        $pdf->Ln(3);
+        $pdf->SetFont('Times','',5.9);
+        $pdf->Cell(0,4,'               Pilote                   Av. de Gaulle          B.P.14                  Derri'.utf8_decode("è").'re le Garage Adm    Face CAMTEL     Derri'.utf8_decode("è").'re D'.utf8_decode("é").'l. MINCAF         R'.utf8_decode("é").'sid Gouverneur          Vers les Services du             Sis au Quartier                  BP: ','0','','J');
+        // les boites postales
+        $pdf->Ln(2);
+        $pdf->Cell(0,4,'B.P. 7239 Yaound'.utf8_decode("é").'            B.P. 3584               T'.utf8_decode("é").'l:233,32,24,12          B.P. 560                            B.P. 1008                au plateau,BP: 960        Tel.(237) 222 24 12 60        Gouverneur                  pitoar'.utf8_decode("é").'(400 places)          Tel: (237)','0','','J');
+        $pdf->Ln(2);
+        $pdf->SetFont('Times','',5);
+
+        $pdf->Cell(0,4,'E-mails: ypc@bilcam.net        T'.utf8_decode("é").'l:(237) 233 42 91 44   Middle Farms- Cit'.utf8_decode("é").'- Sic Bota    T'.utf8_decode("é").'l:(237) 233 36 32 9    T'.utf8_decode("é").'l : (237) 222,28,46,51   T'.utf8_decode("é").'l:(237) 222 27 25 97   Fax :(237) 222 24 21 60  BP :706    T'.utf8_decode("é").'l:233 18 33 40 B.P. 630    T'.utf8_decode("é").'l:222293372                       Email  ','0','','J');
+
+        $pdf->Ln(2);
+        $pdf->Cell(0,4,'www.bilcam.net                       douala.plc@bilcam.net     buea.plc@bilcam.net    bamenda.plc@bilcam.net      ebolowa.plc@bilcam.net   garoua.plc@bilcam.net         bertoua.plc@bilcam.net         baffoussam.plc@bilcam.net    maroua.plc@bilcam.net    ngaoundere.plc@bilcam.net','0','','J');
+        // Footer
+        $pdf->output('D','RECU_'.$eleve->last_name.'_'.$eleve->first_name.'.pdf',1);
+
     }
 
     // to generate pdf for bulletin receipt
