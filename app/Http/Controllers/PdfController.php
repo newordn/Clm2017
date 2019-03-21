@@ -189,11 +189,11 @@ class PdfController extends Controller
         $pdf->Ln(7);
 
         $pdf->SetFont('Times','',13);
-        $pdf->Cell(0,5,"COURS D'ANGLAIS/FRANCAIS POUR ".strtoupper(explode("-",$classe->category)[0]),'0','','C');
+        $pdf->Cell(0,5,"COURS D'ANGLAIS/FRANCAIS POUR ".$classe->category,'0','','C');
         $pdf->Ln();
         $pdf->cell(55);
         $pdf->SetFont('Times','I',13);
-        $pdf->Cell(73,5,'ENGLISH/FRENCH COURSE FOR '.strtoupper(explode("-",$classe->category)[1]),'0','','C');     
+        $pdf->Cell(73,5,'ENGLISH/FRENCH COURSE FOR '.$classe->category,'0','','C');
         $date = explode('-',$account->year);
         $pdf->Ln(10);
         $pdf->SetFont('Times','',9);
@@ -202,8 +202,8 @@ class PdfController extends Controller
         $pdf->Image('avatar.png',20,95,-350);
         $pdf->Ln(6);
         $pdf->cell(80);
-        $pdf->Cell(17,5,'Identifiant : ','0','','C');//.......
-        $pdf->Cell(10,5,' '.$eleve->matricule,'0','','C');
+        $pdf->Cell(17,5,'Identifiant : '. utf8_decode($eleve->matricule),'0','','C');//.......
+
         $pdf->Ln();
         $pdf->cell(60);
         $pdf->SetFont('Times','',13);
@@ -216,7 +216,7 @@ class PdfController extends Controller
 
         $pdf->Ln(10);
         $pdf->SetFont('Times','B',14);
-        $pdf->Cell(0,5,'Classe / Class : '.utf8_decode(str_replace("-","/",$classe->level.' '.$classe->module)),'0','','C');
+        $pdf->Cell(0,5,'Classe / Class : '.utf8_decode(str_replace("-","/",$classe->level.' '.$classe->module.' '.$classe->indice)),'0','','C');
 
         $pdf->Ln(3);
         // premiere ligne evaluation et les matieres
@@ -383,8 +383,8 @@ class PdfController extends Controller
         $pdf->Cell(10);
          $reste =0;
         if($mAmount && $mFees)
-         $reste = $account->fees - $account->amount_paid;
-        $pdf->Cell(70,5,'Arri'.utf8_decode("é").'r'.utf8_decode("é").'s d'.utf8_decode("û").'s / Fees Owed : '.$reste,'0','','L');
+         $reste = $classe->amount - $account->amount_paid;
+        $pdf->Cell(70,5,'Arri'.utf8_decode("é").'r'.utf8_decode("é").'s d'.utf8_decode("û").'s / Fees Owed : '.$reste.' Francs','0','','L');
 
         $pdf->Cell(85,5,'---> Prochain module / Next module :','0','','C');
 
@@ -403,9 +403,9 @@ class PdfController extends Controller
 
         $pdf->Cell(10);
         if($mFees)
-        $pdf->Cell(0,5,'Frais des cours / Tuition fees : '.$account->fees. ' Francs','0','','L');
+        $pdf->Cell(0,5,'Frais des cours / Tuition fees : '.$classe->amount. ' Francs','0','','L');
         else 
-        $pdf->Cell(0,5,'Frais des cours / Tuition fees : '.$account->fees,'0','','L');    
+        $pdf->Cell(0,5,'Frais des cours / Tuition fees : '.$classe->amount.' Francs','0','','L');
         $pdf->Ln(6);
 
         $pdf->Cell(10);
@@ -428,11 +428,12 @@ class PdfController extends Controller
         $pdf->output('D','BULLETIN_'.$eleve->last_name.'_'.$eleve->first_name.'.pdf',1);
     }
 
+    // to generate pdf for list of student
     public function getPdfListeStudents($id, InscriptionRepository$inscriptionRepository)
     { 
         $pdf  = new RecuPdf();
 
-        $pdf->SetFont('Times','',16);
+        $pdf->SetFont('Times','',13);
         $pdf->AddPage();
         // recuperation des donnees
 
@@ -440,10 +441,10 @@ class PdfController extends Controller
         $classe = $eleve->classe;
 
         // definition de l'entete
-        $header = array('ID', 'NOMS ET PR'.utf8_decode("É").'NOMS', 'ARRI'.utf8_decode("É").'R'.utf8_decode("É").'S D'.utf8_decode("Û").'S','PAID');
+        $header = array('Id', 'NOMS ET PR'.utf8_decode("É").'NOMS', 'ARRI'.utf8_decode("É").'R'.utf8_decode("É").'S D'.utf8_decode("Û").'S','PAY'.utf8_decode("É").'E');
         // affichage de l'entete
         $pdf->Ln(15);
-            $pdf->Cell(300,7,"LISTE DE ".strtoupper($classe->category.' '.utf8_decode($classe->level).' '.$classe->module).' DU '.date("y-m-d h:m"),0,0,"L");
+            $pdf->Cell(200,7,"LISTE DE ".strtoupper($classe->category.' '.utf8_decode($classe->level).' '.$classe->module).' DU '.date("y-m-d h:m"),0,0,"C");
                 $pdf->Ln(15);
             $pdf->Cell(8,7,$header[0],1,0,"C");
             $pdf->Cell(110,7,$header[1],1,0,"C");
@@ -479,7 +480,7 @@ class PdfController extends Controller
         $pdf->Ln(7);
         }
 
-        $pdf->output('D','LISTE_'.strtoupper($classe->category.'_'.$classe->level.'_'.$classe->module).'.pdf',1);
+        $pdf->output('D','LISTE_'.strtoupper($classe->category.'_'.$classe->level.'_'.$classe->module).' '.$classe->indice.'.pdf',1);
     }
 }
 

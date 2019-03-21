@@ -17,7 +17,7 @@ Class ClassRepository implements ClassRepositoryInterface
     public function show($termId,$category,$level,$module)
     {
         $classe = Classe::where([['term_id',$termId],['category',$category],['level',$level],['module',$module]])->get()->first();
-        return view('show')->withstudents($classe->eleves()->get())->
+        return view('show')->withclasseId($classe->id)->withstudents($classe->eleves()->get())->
         withcategory($category)->withlevel($level)->withmodule($module)->withtermId($termId)->withamount($classe->amount);
             
     }

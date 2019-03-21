@@ -10,10 +10,9 @@ class TermsController extends Controller
 {
     public function getTerms(TermRepository $termRepository)
     {
-        if(session('admin')=="yes" |session('register')=="yes" ) {
             $terms = $termRepository->getTerms();
             return view('terms')->withTerms($terms);
-        }
+
         return redirect('/');
     }
 
@@ -26,9 +25,11 @@ class TermsController extends Controller
     }
     public function postTerm(TermRequest $termRequest,TermRepository $termRepository)
     {
-
-         $termRepository->save($termRequest);
-        return redirect("/terms");
+        if(session('admin')=="yes" |session('register')=="yes" ) {
+            $termRepository->save($termRequest);
+            return redirect("/terms");
+        }
+        return redirect("/");
 
     }
     public function getTerm($term_id)

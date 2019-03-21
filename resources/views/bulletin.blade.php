@@ -57,7 +57,7 @@ BULLETIN
 
 <!-- Evaluation 2-->
   <h3 class="center-align">Evaluation II</h3>
-  <div class="container" style="margin-top:30px">
+  <div class="container" style="margin-top:30px;margin-bottom: 6rem;">
   <!-- formulaire d'inscription -->
         <!-- Comprehension orale -->
           <div class="input-field">

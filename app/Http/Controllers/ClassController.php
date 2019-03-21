@@ -16,6 +16,10 @@ class ClassController extends Controller
     }
     public function create(ClassRequest $request, ClassRepository $classRepository)
     {
-        return $classRepository->create($request);
+        if(session('admin')=="yes" |session('register')=="yes" ) {
+            return $classRepository->create($request);
+        }
+        else
+            return redirect('/terms');
     }
 }
