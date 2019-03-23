@@ -35,17 +35,27 @@ CLASS/CLASSES
 
 		  <!--categorie -->
 		  <div class="center-align">
-			  <label for="category"><strong>CATÉGORIE/CATEGORY</strong></label>
-			  <!-- Dropdown Structure -->
-			  <select name="category" id="category">
-				  <option value="Juniors" selected>Juniors</option>
-				  <option value="Adults" >Adults</option>
-				  <option value="Adultes" >Adultes</option>
-				  <option value="Special">Special</option>
-				  <option value="One-to-one">One-to-One</option>
-			  </select>
 
-		  </div>
+					  <label for="category"><strong>CATÉGORIE/CATEGORY</strong></label>
+					  <!-- Dropdown Structure -->
+			  			<div>
+							<div class="row">
+								<div class="col s8">
+							  <select name="category" id="category">
+								  <option value="Juniors" selected>Juniors</option>
+								  <option value="Adults" >Adults</option>
+								  <option value="Adultes" >Adultes</option>
+								  <option value="Special">Special</option>
+								  <option value="One-to-one">One-to-One</option>
+							  </select>
+								</div>
+								<div class="col s4">
+						  <input name="category_suffix" value="" class="input-field">
+								</div>
+							</div>
+					  </div>
+				  </div>
+
 		  <!-- categorie -->
 
 		  <!-- niveau -->

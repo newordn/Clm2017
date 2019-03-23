@@ -26,7 +26,8 @@ Class ClassRepository implements ClassRepositoryInterface
     public function create( $request)
     {
         $classe = new Classe();
-        $classe->category = $request->input('category');
+
+        $classe->category = $request->input('category'). " ".   $request->input('category_suffix');
         $classe->level = $request->input('level');
         $classe->module = $request->input('module');
         $classe->amount = $request->input('amount');
