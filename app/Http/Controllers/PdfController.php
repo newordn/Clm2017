@@ -26,7 +26,7 @@ class PdfController extends Controller
         $account = $eleve->account;
         $classe = $eleve->classe;
         $mAmount = (int) $account->amount_paid;
-        $mFees = (int) $account->fees;
+        $mFees = (int) $classe->amount;
 
         // we write properly
         $pdf->Cell(0,6,'PROGRAMME DE FORMATION LINGUISTIQUE BILINGUE','0','','C');
@@ -154,6 +154,7 @@ class PdfController extends Controller
     // to generate pdf for bulletin receipt
     public function getPdfBulletin($id,$decision,$book,InscriptionRepository $inscriptionRepository)
     {
+        if(session('admin')!="yes") return view('bulletinId')->withbulletinId($id);
         // we create the pdf
         $pdf = new RecuPdf();
         $pdf->AliasNbPages();
@@ -168,7 +169,7 @@ class PdfController extends Controller
         $classe = $eleve->classe;
         $absences = $eleve->absences;
         $mAmount = (int)$account->amount_paid;
-        $mFees = (int)$account->fees;
+        $mFees = (int)$classe->amount;
 
 
         $pdf->SetFont('Times','',16);
@@ -197,8 +198,9 @@ class PdfController extends Controller
         $date = explode('-',$account->year);
         $pdf->Ln(10);
         $pdf->SetFont('Times','',9);
+        $termId = Term::find($classe->term_id)->term_num;
 
-        $pdf->Cell(0,5,'Ann'.utf8_decode("é").'e scolaire / Academic year  :'.$date[0]  .' ---> Trimestre/Term : ' .$account->trimestre .' ---> P'.utf8_decode("é").'riode/Period :','0','','C');
+        $pdf->Cell(0,5,'Ann'.utf8_decode("é").'e scolaire / Academic year  :'.$date[0]  .' ---> Trimestre/Term : ' .$termId.' ---> P'.utf8_decode("é").'riode/Period :'.$classe->start_of_module,'0','','C');
         $pdf->Image('avatar.png',20,95,-350);
         $pdf->Ln(6);
         $pdf->cell(80);
@@ -238,8 +240,8 @@ class PdfController extends Controller
         $pdf->Cell(23,15,'Assessment','1','','C');
         $pdf->Cell(30,15,'Orale','1','','C');
         $pdf->Cell(23,15,'Langue','1','','C');
-        $pdf->Cell(23,15,''.utf8_decode("é").'crite','1','','C');
-        $pdf->Cell(30,15,''.utf8_decode("é").'crite','1','','C');
+        $pdf->Cell(23,15,''.utf8_decode("É").'crite','1','','C');
+        $pdf->Cell(30,15,''.utf8_decode("É").'crite','1','','C');
         $pdf->Cell(23,15,'Orale','1','','C');
         $pdf->Cell(13,15,'','1','','C');
 
@@ -351,7 +353,7 @@ class PdfController extends Controller
         
         $pdf->Cell(10);
         $pdf->SetFont('Times','B',9);
-        $pdf->Cell(108,5,'Manuel    Video    Audio    Salc    Total    Justify        Assiduit'.utf8_decode("é").' / Attendance ','0','','L');
+        $pdf->Cell(108,5,'Manuel    Video      Salc    Total    Justify        Assiduit'.utf8_decode("é").' / Attendance ','0','','L');
 
         $pdf->Cell(8);
         $pdf->SetFont('Times','B',10);
@@ -367,7 +369,7 @@ class PdfController extends Controller
         $pdf->Cell(1);
         $pdf->Cell(10,5,'','0','','C');
         $pdf->Cell(1);
-        $pdf->Cell(10,5,'','0','','C');
+        $pdf->Cell(1,5,'','0','','C');
         $pdf->Cell(1);
         $pdf->Cell(10,5,'','0','','C');
         $pdf->Cell(1);
@@ -421,7 +423,7 @@ class PdfController extends Controller
         $pdf->Cell(0,5,'Par Mr/Mme : '.session('login'),'0','','L');
 
 
-        $pdf->Ln(26);
+        $pdf->Ln(8);
 
         $pdf->Cell(0,5,'Le Directeur/The Director    :                ','0','','R');
 

@@ -64,7 +64,9 @@ Route::post('bulletin',['uses'=>'BulletinController@postBulletin','as'=>'bulleti
 
 // abscences route
 Route::get('absence/{eleve_id}',['uses'=>'AbsenceController@setAbsence','as'=>'absence']);
+// presence route
 
+Route::get('presence/{eleve_id}',['uses'=>'AbsenceController@setPresence','as'=>'presence']);
 // searchs route
 Route::get('search/{student_id}',['uses'=>'SearchController@search1','as'=>'search1']);
 Route::post('/search',['uses'=>'SearchController@search','as'=>'search']);

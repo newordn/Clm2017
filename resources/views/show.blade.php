@@ -28,10 +28,14 @@
 			<tr >
 				<td style="border:1px solid gray">{{$student->last_name}} {{$student->first_name}}</td>
 				<td style="border:1px solid gray">{{$student->matricule}}</td>
-				<td style="border:1px solid gray">{{count($student->absences)}}
-					<a href="{{'/absence/'.$student->id}}" class="btn brown">
+				<td style="border:1px solid gray">{{count($student->absences)}} &nbsp;&nbsp;
+					<a href="{{'/absence/'.$student->id}}" class="btn red">
+						<i class="fa fa-eye-slash"></i>
+					</a>
+					<a href="{{'/presence/'.$student->id}}" class="btn blue ">
 						<i class="fa fa-eye"></i>
-					</a></td>
+					</a>
+				</td>
 				<td class="center-align">
 					<a class="btn blue" href="{{'/bulletin/'.$student->id}}">
 						<i class="fa fa-address-card-o"></i>

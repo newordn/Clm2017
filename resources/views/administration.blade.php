@@ -34,7 +34,7 @@
 							<select name="right">
 								<option value="admin" >ADMINISTRATEUR</option>
 								<option value="register" >REGISSEUR</option>
-								<option value="normal" selected>NORMAL</option>
+								<option value="normal" selected>ENSEIGNANT</option>
 							</select>
 
 							<!-- csrf -->

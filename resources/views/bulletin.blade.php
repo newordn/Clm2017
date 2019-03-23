@@ -113,12 +113,14 @@ BULLETIN
               <option >ENERGY 2</option>
               <option >ENERGY 3</option>
               <option >ENERGY 4</option>
-              <option >TOTAL ENGLISH STARTER</option>
-              <option >TOTAL ENGLISH ELEMENTARY</option>
-              <option >TOTAL ENGLISH PRE-INTERMEDIATE</option>
-              <option >TOTAL ENGLISH INTERMEDIATE</option>
-              <option >TOTAL ENGLISH UPPER-INTERMEDIATE</option>
-              <option >TOTAL ENGLISH ADVANCED</option>            
+              <option >NEW TOTAL ENGLISH STARTER</option>
+              <option >NEW TOTAL ENGLISH ELEMENTARY</option>
+              <option >NEW TOTAL ENGLISH PRE-INTERMEDIATE</option>
+              <option >NEW TOTAL ENGLISH INTERMEDIATE</option>
+              <option >NEW TOTAL ENGLISH UPPER-INTERMEDIATE</option>
+              <option >NEW TOTAL ENGLISH ADVANCED</option>
+              <option >EAYDS ELEMENTARY</option>
+              <option >EAYDS BEGINNER</option>
             </select>
           </div>
         <!-- course book -->

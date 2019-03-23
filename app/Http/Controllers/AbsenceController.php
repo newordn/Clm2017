@@ -16,4 +16,12 @@ class AbsenceController extends Controller
     	return back();
 
     }
+    public function setPresence($eleve_id)
+    {
+
+        $oneAbsence = Absence::where("eleve_id",$eleve_id)->get()->last();
+        if($oneAbsence!=null)
+        $oneAbsence->delete();
+        return back();
+    }
 }
