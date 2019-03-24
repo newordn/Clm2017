@@ -28,6 +28,7 @@ class BulletinController extends Controller
     }
     public function searchBulletin(BulletinRequest $bulletinRequest)
     {
+        if(session('admin')!="yes") return redirect('/');
         return redirect('/pdf_bulletin/'.$bulletinRequest->input('bulletin_id'));
     }
     
