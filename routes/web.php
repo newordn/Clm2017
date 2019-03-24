@@ -83,7 +83,11 @@ Route::post('terms', ['uses'=> 'TermsController@postTerm', 'as' => 'termSave']);
 Route::post('close_term/{term_id}',['uses'=>'TermsController@closeTerm','as'=>'closeTerm']);
 
 // courses route
+Route::get('courses/french',['uses'=>'CourseController@getFrenchCourses']);
+Route::get('courses/english',['uses'=>'CourseController@getEnglishCourses']);
 Route::get('courses',['uses'=>'CourseController@getCourses','as'=>'courses']);
+Route::get('course/{filename}',['uses'=>'CourseController@getCourse']);
+
 
 // rights route
 
