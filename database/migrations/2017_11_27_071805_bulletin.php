@@ -16,6 +16,8 @@ class Bulletin extends Migration
          Schema::create('bulletin', function (Blueprint $table) {
             $table->increments('id');
             $table->date('year');
+            $table->string('decision');
+            $table->string('book');
             $table->integer('eleve_id')->unsigned();
             $table->foreign('eleve_id')
                   ->references('id')

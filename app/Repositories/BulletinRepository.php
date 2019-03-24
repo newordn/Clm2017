@@ -21,6 +21,8 @@ Class BulletinRepository implements BulletinRepositoryInterface
 		$this->bulletin = new Bulletin;
 		$this->bulletin->year = date("Y-m-d h-m-s");
 		$this->bulletin->eleve_id = $form->input('id');
+		$this->bulletin->decision = $form->input('decision');
+		$this->bulletin->book= $form->input('book');
 		$eleve_id = $form->input('id');
 		$this->bulletin->save();
 

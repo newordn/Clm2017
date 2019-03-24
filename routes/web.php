@@ -52,7 +52,7 @@ Route::get('class',['uses'=>'ClassController@getClass','as'=>'class']);
 // pdf routes
 
 Route::get('pdf_inscription/{id}','PdfController@getPdfInscription');
-Route::get('pdf_bulletin/{id}/{decision}/{book}','PdfController@getPdfBulletin');
+Route::get('pdf_bulletin/{id}','PdfController@getPdfBulletin');
 
 Route::get('pdf_liste_students/{id}','PdfController@getPdfListeStudents');
 
@@ -60,6 +60,7 @@ Route::get('pdf_liste_students/{id}','PdfController@getPdfListeStudents');
 // bulletin routes
 
 Route::get('bulletin/{eleve_id}','BulletinController@getBulletin');
+Route::post('search_bulletin','BulletinController@searchBulletin');
 Route::post('bulletin',['uses'=>'BulletinController@postBulletin','as'=>'bulletin']);
 
 // abscences route

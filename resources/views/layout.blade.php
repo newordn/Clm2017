@@ -17,7 +17,7 @@
 
            <h1 id="toolbar">CENTRE LINGUISTIQUE DE MAROUA</h1>
           <div class="row">
-           <div class="left-align col s4">
+           <div class="left-align col s2">
               <a class="btn btn-large btn-floating" href="/"><i class="fa fa-home"></i></a>
               
             </div>
@@ -32,7 +32,17 @@
               </div>
               
             </div>
-            <div class="right-align col s4" >
+              <div class="center-align col s4">
+                  <div class="input-field">
+                      <form action="{{'/search_bulletin'}}" method="POST">
+                          <input id="search" name="bulletin_id" style="margin:0px;width: 87%" type="text" placeholder="Imprimer un bulletin en entrant son identifiant.">
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}" >
+                          <button type="submit" class="btn btn-floating" style="display:inline"> <i class="fa fa-search"></i> </button>
+
+                      </form>
+                  </div>
+              </div>
+            <div class="right-align col s2" >
                 <h5><i><strong>@if(!empty(Session::get('login'))){{Session::get('login')}} <a class="btn btn-floating red" href="{{route('logOut')}}"><i class="fa fa-sign-out"></i></a> @endif</strong></i></h5>
              </div>
       </div>

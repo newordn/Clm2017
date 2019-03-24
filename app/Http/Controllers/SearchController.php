@@ -9,7 +9,7 @@ class SearchController extends Controller
 {
    public function searchInterface($matricule)
     {
-    	$student = Eleve::where('id',$matricule)->get()->last();
+    	$student = Eleve::where('matricule',$matricule)->get()->last();
     	$account = $student->account;
         $classe = $student->classe;
         $termId = Term::find($classe->term_id)->term_num;

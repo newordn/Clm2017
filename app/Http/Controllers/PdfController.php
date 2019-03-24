@@ -152,7 +152,7 @@ class PdfController extends Controller
     }
 
     // to generate pdf for bulletin receipt
-    public function getPdfBulletin($id,$decision,$book,InscriptionRepository $inscriptionRepository)
+    public function getPdfBulletin($id,InscriptionRepository $inscriptionRepository)
     {
         if(session('admin')!="yes") return view('bulletinId')->withbulletinId($id);
         // we create the pdf
@@ -358,7 +358,7 @@ class PdfController extends Controller
         $pdf->Cell(8);
         $pdf->SetFont('Times','B',10);
         $pdf->SetFillColor(255,255,255);
-        $decision = str_replace("-","/",$decision);
+        $decision = str_replace("-","/",$bulletin->decision);
         $pdf->MultiCell(53,4,utf8_decode($decision),'0','','C','false');
 
         $pdf->Ln(3);
@@ -411,7 +411,7 @@ class PdfController extends Controller
         $pdf->Ln(6);
 
         $pdf->Cell(10);
-        $pdf->Cell(0,5,'Livres des cours / Course book : '.$book,'0','','L');
+        $pdf->Cell(0,5,'Livres des cours / Course book : '.$bulletin->book,'0','','L');
 
         $pdf->Ln(8);
 

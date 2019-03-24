@@ -19,12 +19,16 @@ class BulletinController extends Controller
         {
             $id = $bulletinRepository->save($bulletinRequest); 
 	    	if($id)
-	    	return view('recuBulletin')->withid($id)->withdecision($bulletinRequest->input('decision'))->withbook($bulletinRequest->input('book'));
+	    	return view('recuBulletin')->withid($id);
 	        else
 	            return view ('recuBulletin');
         }
         else
             return redirect('/');
+    }
+    public function searchBulletin(BulletinRequest $bulletinRequest)
+    {
+        return redirect('/pdf_bulletin/'.$bulletinRequest->input('bulletin_id'));
     }
     
 }
