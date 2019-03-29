@@ -113,11 +113,7 @@ class InscriptionRepository implements InscriptionRepositoryInterface
         $accountUpdated = $eleve->account;
         $accountUpdated->payment = $account->input('payment');
         $accountUpdated->amount_paid = $account->input('amount_paid');
-        $accountUpdated->fees = $account->input('fees');
-        $accountUpdated->trimestre = $account->input('trimestre');
-		$classe=Classe::where([['category',$account->input('category')], ['level',$account->input('level')],['module',$account->input('module')]])->get()->last();
-		if($classe!=null)
-        $eleve->classe_id = $classe->id;
+        $accountUpdated->paymentSpec = $account->input('paymentSpec');
         // perfoming
         $eleve->save();
         $accountUpdated->save();

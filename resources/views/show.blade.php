@@ -193,12 +193,12 @@
 				<!-- mode de paiement -->
 
 
-			<!-- mode de paiement -->
+			<!-- specification de paiement -->
 			<div class="center-align" >
 				<label for="paymentSpec">SPECIFICATION DE PAIEMENT</label>
 				<input type="text" name="paymentSpec" id="paymentSpec" placeholder="Somme totale">
 			</div>
-			<!-- mode de paiement -->
+			<!-- specification de paiement -->
 
 				<!-- somme versee -->
 				<div class=" center-align">

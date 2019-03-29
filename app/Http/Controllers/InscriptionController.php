@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\InscriptionRequest;
 use App\Repositories\InscriptionRepository;
 use App\Eleve;
+use App\Term;
 class InscriptionController extends Controller
 {
     public function getForm()
@@ -45,9 +46,10 @@ class InscriptionController extends Controller
         $eleve = Eleve::find($id);
         $account = $eleve->account;
         $classe = $eleve->classe;
-       if(session('authentificated')=="yes")
+        $termId = Term::find($classe->term_id)->term_num;
+       if(session('register')=="yes" | session('admin')=="yes")
         {
-            return view('inscriptionModify')->witheleve($eleve)->withaccount($account)->withclasse($classe);
+            return view('updateInscription')->witheleve($eleve)->withaccount($account)->withclasse($classe)->withtermId($termId);
         } 
         else
             return redirect('/');
@@ -59,7 +61,11 @@ class InscriptionController extends Controller
         {
               $id = $inscriptionRepository->modify($inscriptionRequest);
         if( $id!=0) // si l'eleve a ete inscrit
-        return view('recuInscription')->withid($id);
+        return view('recuInscription')->withid($id)->witherror("L' Apprenant(e) est déja inscrit(e).")
+            ->withtermId($inscriptionRequest->input('trimestre'))
+            ->withcategory($inscriptionRequest->input('category'))
+            ->withmodule($inscriptionRequest->input('module'))
+            ->withlevel($inscriptionRequest->input('level'));;
         // si il y'a erreur lors de l'inscription
             return $this->modifyForm($id);
          
