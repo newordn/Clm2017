@@ -13,8 +13,8 @@ CLASS/CLASSES
 					<p>Date de début : {{$class->start_of_module}} </p>
 				</div>
 				<div class="card-action">
-					<a class="btn-large waves-effect waves-light blue" href="{{'/showClass/'.$termId. '/' .$class->category . '/' . $class->level .'/'. $class->module}}">Ouvrir</a>
-					<a class="btn-large waves-effect waves-light red" href="{{'/term/'.$termId}}">Modifier</a>
+					<a class="btn-large waves-effect waves-light blue" href="{{'/showClass/'.$termId.'/' .$class->category . '/' . $class->level .'/'. $class->module}}">Ouvrir</a>
+					<a class="btn-large waves-effect waves-light red" href="{{'/update_class/'.$termId.'/' .$class->category . '/' . $class->level .'/'. $class->module}}">Modifier</a>
 				</div>
 			</div>
 
@@ -32,7 +32,6 @@ CLASS/CLASSES
     <div class="modal-content">
       <h4 class="center-align">Ouvrir une classe</h4>
       <form method="post" action="{{url('/new_class')}}">
-
 		  <!--categorie -->
 		  <div class="center-align">
 
@@ -75,8 +74,6 @@ CLASS/CLASSES
 				  <option>Upper Intermediate</option>
 				  <option>Supérieur</option>
 				  <option>Advanced</option>
-				  <option>Perfectionnement</option>
-				  <option>Advanced Continuation</option>
 
 			  </select>
 		  </div>
@@ -99,6 +96,8 @@ CLASS/CLASSES
 				  <option  value="B4">B4</option>
 				  <option  value="B5">B5</option>
 				  <option  value="B6">B6</option>
+				  <option value="Advanced Continuation">Advanced Continuation</option>
+				  <option value="Perfectionnement">Perfectionnement</option>
 			  </select>
 		  </div>
 		  <!-- module -->
@@ -121,13 +120,13 @@ CLASS/CLASSES
 		  <!-- start of module -->
 		  <div class=" center-align">
 			  <label for="start_of_module"><strong>DEBUT DU MODULE</strong></label>
-			  <input type="date" name="start_of_module" value="2019-04-03">
+			  <input type="date" name="start_of_module"  placeholder="2019-04-03">
 		  </div>
 		  <!-- start of module -->
 
 		  <!-- Frais des cours -->
 		  <div class="input-field">
-			  <input type="text" name="amount" id="amount">
+			  <input type="text" name="amount" id="amount" >
 			  <label for="amount" style="color:black">FRAIS DES COURS/TUITION FEES</label>
 		  </div>
 		  <!-- Frais des cours -->

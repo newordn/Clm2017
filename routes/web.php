@@ -45,8 +45,8 @@ Route::get('showClass/{termId}/{category}/{level}/{module}','ClassController@sho
 
 
 Route::post('new_class','ClassController@create');
-
-
+Route::get('update_class/{termId}/{category}/{level}/{module}','ClassController@getForm');
+Route::post('update_class','ClassController@postForm');
 Route::get('class',['uses'=>'ClassController@getClass','as'=>'class']);
 
 // pdf routes
